@@ -1,0 +1,410 @@
+2025-09-29T15:20:00:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:00:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:00:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:00:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:05:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:05:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:05:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:05:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:08:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:08:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:08:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:08:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:10:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:10:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:10:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:10:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:12:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:12:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:12:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:12:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:14:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:14:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:14:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:14:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:16:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:16:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:16:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:16:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:18:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:18:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:18:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:18:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:20:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:20:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:20:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:20:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:22:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:22:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:22:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:22:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:24:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:24:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:24:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:24:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:26:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:26:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:26:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:26:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:28:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:28:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:28:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:28:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:30:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:30:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:30:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:30:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:32:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:32:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:32:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:32:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:34:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:34:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:34:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:34:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:37:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:37:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:37:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:37:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:39:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:39:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:39:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:39:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:41:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:41:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:41:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:41:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:43:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:43:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:43:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:43:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:45:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:45:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:45:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:45:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:47:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:47:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:47:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:47:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:49:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:49:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:49:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:49:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:51:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:51:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:51:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:51:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:53:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:53:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:53:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:53:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:55:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:55:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:55:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:55:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:57:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:57:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:57:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:57:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:00:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:00:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:00:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:00:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:04:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:04:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:04:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:04:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:06:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:06:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:06:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:06:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:08:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:08:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:08:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:08:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:10:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:10:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:10:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:10:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:12:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:12:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:12:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:12:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:15:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:15:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:15:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:15:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:17:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:17:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:17:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:17:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:19:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:19:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:19:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:19:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:21:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:21:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:21:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:21:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:23:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:23:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:23:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:23:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:25:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:25:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:25:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:25:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:27:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:27:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:27:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:27:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:28:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:28:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:28:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:28:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:31:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:31:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:31:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:31:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:33:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:33:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:33:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:33:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:35:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:35:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:35:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:35:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:37:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:37:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:37:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:37:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:39:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:39:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:39:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:39:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:41:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:41:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:41:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:41:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:43:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:43:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:43:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:43:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:45:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:45:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:45:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:45:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:47:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:47:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:47:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:47:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:49:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:49:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:49:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:49:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:51:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:51:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:51:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:51:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:53:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:53:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:53:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:53:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:55:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:55:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:55:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:55:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:57:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:57:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:57:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:57:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:59:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:59:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:59:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:59:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:01:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:01:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:01:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:01:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:03:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:03:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:03:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:03:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:05:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:05:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:05:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:05:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:07:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:07:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:07:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:07:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:09:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:09:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:09:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:09:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:11:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:11:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:11:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:11:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:13:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:13:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:13:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:13:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:15:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:15:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:15:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:15:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:17:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:17:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:17:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:17:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:18:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:18:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:18:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:18:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:20:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:20:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:20:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:20:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:22:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:22:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:22:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:22:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:24:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:24:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:24:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:24:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:27:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:27:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:27:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:27:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:29:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:29:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:29:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:29:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:30:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:30:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:30:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:30:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:33:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:33:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:33:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:33:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:34:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:34:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:34:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:34:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:36:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:36:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:36:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:36:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:38:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:38:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:38:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:38:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:40:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:40:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:40:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:40:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:43:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:43:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:43:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:43:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:45:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:45:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:45:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:45:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:47:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:47:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:47:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:47:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:49:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:49:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:49:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:49:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:51:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:51:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:51:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:51:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:53:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:53:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:53:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:53:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:56:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:56:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:56:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:56:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:58:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:58:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:58:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:58:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:00:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:00:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:00:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:00:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:02:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:02:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:02:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:02:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:04:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:04:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:04:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:04:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:06:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:06:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:06:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:06:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:09:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:09:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:09:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:09:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:11:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:11:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:11:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:11:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:13:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:13:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:13:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:13:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:15:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:15:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:15:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:15:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:17:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:17:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:17:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:17:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:19:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:19:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:19:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:19:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:21:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:21:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:21:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:21:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:23:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:23:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:23:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:23:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:25:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:25:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:25:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:25:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:27:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:27:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:27:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:27:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:29:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:29:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:29:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:29:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:31:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:31:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:31:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:31:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:33:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:33:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:33:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:33:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T16:17:54:  ⚠ Blocked cross-origin request from 103.197.191.12 to /_next/* resource. To allow this, configure "allowedDevOrigins" in next.config
+2025-09-29T16:17:54: Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins

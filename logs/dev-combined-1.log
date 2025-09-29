@@ -1,0 +1,1308 @@
+2025-09-29T15:19:58: 
+2025-09-29T15:19:58: > asset-management@0.1.0 dev
+2025-09-29T15:19:58: > next dev --turbopack
+2025-09-29T15:19:58: 
+2025-09-29T15:20:00:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:00:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:00:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:00:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:02:    ▲ Next.js 15.5.2 (Turbopack)
+2025-09-29T15:20:02:    - Local:        http://localhost:3000
+2025-09-29T15:20:02:    - Network:      http://103.197.191.12:3000
+2025-09-29T15:20:02:    - Environments: .env.development, .env
+2025-09-29T15:20:02:    - Experiments (use with caution):
+2025-09-29T15:20:02:      ✓ optimizeCss
+2025-09-29T15:20:02:      · webVitalsAttribution
+2025-09-29T15:20:02:      · optimizePackageImports
+2025-09-29T15:20:02:      · ...
+2025-09-29T15:20:02: 
+2025-09-29T15:20:02:  ✓ Starting...
+2025-09-29T15:20:02: [?25h
+2025-09-29T15:20:03: 
+2025-09-29T15:20:03: > asset-management@0.1.0 dev
+2025-09-29T15:20:03: > next dev --turbopack
+2025-09-29T15:20:03: 
+2025-09-29T15:20:05:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:05:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:05:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:05:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:05: [?25h
+2025-09-29T15:20:06: 
+2025-09-29T15:20:06: > asset-management@0.1.0 dev
+2025-09-29T15:20:06: > next dev --turbopack
+2025-09-29T15:20:06: 
+2025-09-29T15:20:08:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:08:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:08:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:08:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:08: [?25h
+2025-09-29T15:20:09: 
+2025-09-29T15:20:09: > asset-management@0.1.0 dev
+2025-09-29T15:20:09: > next dev --turbopack
+2025-09-29T15:20:09: 
+2025-09-29T15:20:10:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:10:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:10:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:10:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:10: [?25h
+2025-09-29T15:20:11: 
+2025-09-29T15:20:11: > asset-management@0.1.0 dev
+2025-09-29T15:20:11: > next dev --turbopack
+2025-09-29T15:20:11: 
+2025-09-29T15:20:12:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:12:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:12:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:12:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:12: [?25h
+2025-09-29T15:20:13: 
+2025-09-29T15:20:13: > asset-management@0.1.0 dev
+2025-09-29T15:20:13: > next dev --turbopack
+2025-09-29T15:20:13: 
+2025-09-29T15:20:14:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:14:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:14:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:14:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:14: [?25h
+2025-09-29T15:20:14: 
+2025-09-29T15:20:15: 
+2025-09-29T15:20:15: > asset-management@0.1.0 dev
+2025-09-29T15:20:15: > next dev --turbopack
+2025-09-29T15:20:15: 
+2025-09-29T15:20:16:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:16:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:16:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:16:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:16: [?25h
+2025-09-29T15:20:17: 
+2025-09-29T15:20:17: > asset-management@0.1.0 dev
+2025-09-29T15:20:17: > next dev --turbopack
+2025-09-29T15:20:17: 
+2025-09-29T15:20:18:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:18:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:18:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:18:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:18: [?25h
+2025-09-29T15:20:19: 
+2025-09-29T15:20:19: > asset-management@0.1.0 dev
+2025-09-29T15:20:19: > next dev --turbopack
+2025-09-29T15:20:19: 
+2025-09-29T15:20:20:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:20:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:20:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:20:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:20: [?25h
+2025-09-29T15:20:20: 
+2025-09-29T15:20:20: > asset-management@0.1.0 dev
+2025-09-29T15:20:20: > next dev --turbopack
+2025-09-29T15:20:20: 
+2025-09-29T15:20:22:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:22:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:22:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:22:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:22: [?25h
+2025-09-29T15:20:22: 
+2025-09-29T15:20:22: > asset-management@0.1.0 dev
+2025-09-29T15:20:22: > next dev --turbopack
+2025-09-29T15:20:22: 
+2025-09-29T15:20:24:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:24:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:24:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:24:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:24: [?25h
+2025-09-29T15:20:25: 
+2025-09-29T15:20:25: > asset-management@0.1.0 dev
+2025-09-29T15:20:25: > next dev --turbopack
+2025-09-29T15:20:25: 
+2025-09-29T15:20:26:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:26:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:26:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:26:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:27: [?25h
+2025-09-29T15:20:27: 
+2025-09-29T15:20:27: > asset-management@0.1.0 dev
+2025-09-29T15:20:27: > next dev --turbopack
+2025-09-29T15:20:27: 
+2025-09-29T15:20:28:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:28:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:28:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:28:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:28: [?25h
+2025-09-29T15:20:29: 
+2025-09-29T15:20:29: > asset-management@0.1.0 dev
+2025-09-29T15:20:29: > next dev --turbopack
+2025-09-29T15:20:29: 
+2025-09-29T15:20:30:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:30:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:30:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:30:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:30: [?25h
+2025-09-29T15:20:31: 
+2025-09-29T15:20:31: > asset-management@0.1.0 dev
+2025-09-29T15:20:31: > next dev --turbopack
+2025-09-29T15:20:31: 
+2025-09-29T15:20:32:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:32:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:32:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:32:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:32: [?25h
+2025-09-29T15:20:33: 
+2025-09-29T15:20:33: > asset-management@0.1.0 dev
+2025-09-29T15:20:33: > next dev --turbopack
+2025-09-29T15:20:33: 
+2025-09-29T15:20:34:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:34:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:34:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:34:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:35: [?25h
+2025-09-29T15:20:35: 
+2025-09-29T15:20:35: > asset-management@0.1.0 dev
+2025-09-29T15:20:35: > next dev --turbopack
+2025-09-29T15:20:35: 
+2025-09-29T15:20:37:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:37:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:37:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:37:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:37: [?25h
+2025-09-29T15:20:37: 
+2025-09-29T15:20:37: > asset-management@0.1.0 dev
+2025-09-29T15:20:37: > next dev --turbopack
+2025-09-29T15:20:37: 
+2025-09-29T15:20:39:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:39:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:39:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:39:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:39: [?25h
+2025-09-29T15:20:39: 
+2025-09-29T15:20:40: > asset-management@0.1.0 dev
+2025-09-29T15:20:40: > next dev --turbopack
+2025-09-29T15:20:40: 
+2025-09-29T15:20:41:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:41:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:41:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:41:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:41: [?25h
+2025-09-29T15:20:41: 
+2025-09-29T15:20:41: > asset-management@0.1.0 dev
+2025-09-29T15:20:41: > next dev --turbopack
+2025-09-29T15:20:41: 
+2025-09-29T15:20:43:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:43:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:43:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:43:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:43: [?25h
+2025-09-29T15:20:44: 
+2025-09-29T15:20:44: > asset-management@0.1.0 dev
+2025-09-29T15:20:44: > next dev --turbopack
+2025-09-29T15:20:44: 
+2025-09-29T15:20:45:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:45:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:45:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:45:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:45: [?25h
+2025-09-29T15:20:45: 
+2025-09-29T15:20:45: > asset-management@0.1.0 dev
+2025-09-29T15:20:45: > next dev --turbopack
+2025-09-29T15:20:45: 
+2025-09-29T15:20:47:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:47:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:47:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:47:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:47: [?25h
+2025-09-29T15:20:48: 
+2025-09-29T15:20:48: > asset-management@0.1.0 dev
+2025-09-29T15:20:48: > next dev --turbopack
+2025-09-29T15:20:48: 
+2025-09-29T15:20:49:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:49:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:49:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:49:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:49: [?25h
+2025-09-29T15:20:49: 
+2025-09-29T15:20:49: > asset-management@0.1.0 dev
+2025-09-29T15:20:49: > next dev --turbopack
+2025-09-29T15:20:49: 
+2025-09-29T15:20:51:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:51:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:51:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:51:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:51: [?25h
+2025-09-29T15:20:51: 
+2025-09-29T15:20:51: > asset-management@0.1.0 dev
+2025-09-29T15:20:51: > next dev --turbopack
+2025-09-29T15:20:51: 
+2025-09-29T15:20:53:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:53:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:53:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:53:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:53: [?25h
+2025-09-29T15:20:53: 
+2025-09-29T15:20:53: > asset-management@0.1.0 dev
+2025-09-29T15:20:53: > next dev --turbopack
+2025-09-29T15:20:53: 
+2025-09-29T15:20:55:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:55:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:55:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:55:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:55: [?25h
+2025-09-29T15:20:55: 
+2025-09-29T15:20:55: > asset-management@0.1.0 dev
+2025-09-29T15:20:55: > next dev --turbopack
+2025-09-29T15:20:55: 
+2025-09-29T15:20:57:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:20:57:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:20:57:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:20:57:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:20:57: [?25h
+2025-09-29T15:20:57: 
+2025-09-29T15:20:58: 
+2025-09-29T15:20:58: > asset-management@0.1.0 dev
+2025-09-29T15:20:58: > next dev --turbopack
+2025-09-29T15:20:58: 
+2025-09-29T15:21:00:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:00:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:00:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:00:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:00: [?25h
+2025-09-29T15:21:02: 
+2025-09-29T15:21:02: > asset-management@0.1.0 dev
+2025-09-29T15:21:02: > next dev --turbopack
+2025-09-29T15:21:02: 
+2025-09-29T15:21:04:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:04:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:04:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:04:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:04: [?25h
+2025-09-29T15:21:04: 
+2025-09-29T15:21:05: 
+2025-09-29T15:21:05: > asset-management@0.1.0 dev
+2025-09-29T15:21:05: > next dev --turbopack
+2025-09-29T15:21:05: 
+2025-09-29T15:21:06:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:06:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:06:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:06:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:06: [?25h
+2025-09-29T15:21:07: 
+2025-09-29T15:21:07: > asset-management@0.1.0 dev
+2025-09-29T15:21:07: > next dev --turbopack
+2025-09-29T15:21:07: 
+2025-09-29T15:21:08:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:08:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:08:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:08:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:08: [?25h
+2025-09-29T15:21:09: 
+2025-09-29T15:21:09: > asset-management@0.1.0 dev
+2025-09-29T15:21:09: > next dev --turbopack
+2025-09-29T15:21:09: 
+2025-09-29T15:21:10:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:10:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:10:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:10:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:10: [?25h
+2025-09-29T15:21:11: 
+2025-09-29T15:21:11: > asset-management@0.1.0 dev
+2025-09-29T15:21:11: > next dev --turbopack
+2025-09-29T15:21:11: 
+2025-09-29T15:21:12:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:12:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:12:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:12:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:12: [?25h
+2025-09-29T15:21:13: 
+2025-09-29T15:21:13: > asset-management@0.1.0 dev
+2025-09-29T15:21:13: > next dev --turbopack
+2025-09-29T15:21:13: 
+2025-09-29T15:21:15:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:15:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:15:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:15:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:15: [?25h
+2025-09-29T15:21:15: 
+2025-09-29T15:21:15: > asset-management@0.1.0 dev
+2025-09-29T15:21:15: > next dev --turbopack
+2025-09-29T15:21:15: 
+2025-09-29T15:21:17:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:17:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:17:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:17:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:17: [?25h
+2025-09-29T15:21:17: 
+2025-09-29T15:21:17: > asset-management@0.1.0 dev
+2025-09-29T15:21:17: > next dev --turbopack
+2025-09-29T15:21:17: 
+2025-09-29T15:21:19:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:19:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:19:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:19:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:19: [?25h
+2025-09-29T15:21:19: 
+2025-09-29T15:21:19: > asset-management@0.1.0 dev
+2025-09-29T15:21:19: > next dev --turbopack
+2025-09-29T15:21:19: 
+2025-09-29T15:21:21:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:21:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:21:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:21:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:21: [?25h
+2025-09-29T15:21:22: 
+2025-09-29T15:21:22: > asset-management@0.1.0 dev
+2025-09-29T15:21:22: > next dev --turbopack
+2025-09-29T15:21:22: 
+2025-09-29T15:21:23:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:23:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:23:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:23:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:23: [?25h
+2025-09-29T15:21:23: 
+2025-09-29T15:21:23: > asset-management@0.1.0 dev
+2025-09-29T15:21:23: > next dev --turbopack
+2025-09-29T15:21:23: 
+2025-09-29T15:21:25:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:25:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:25:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:25:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:25: [?25h
+2025-09-29T15:21:26: 
+2025-09-29T15:21:26: > asset-management@0.1.0 dev
+2025-09-29T15:21:26: > next dev --turbopack
+2025-09-29T15:21:26: 
+2025-09-29T15:21:27:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:27:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:27:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:27:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:27: [?25h
+2025-09-29T15:21:27: 
+2025-09-29T15:21:27: 
+2025-09-29T15:21:27: > asset-management@0.1.0 dev
+2025-09-29T15:21:27: > next dev --turbopack
+2025-09-29T15:21:27: 
+2025-09-29T15:21:28:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:28:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:28:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:28:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:29: [?25h
+2025-09-29T15:21:29: 
+2025-09-29T15:21:29: > asset-management@0.1.0 dev
+2025-09-29T15:21:29: > next dev --turbopack
+2025-09-29T15:21:29: 
+2025-09-29T15:21:31:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:31:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:31:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:31:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:31: [?25h
+2025-09-29T15:21:31: 
+2025-09-29T15:21:31: > asset-management@0.1.0 dev
+2025-09-29T15:21:31: > next dev --turbopack
+2025-09-29T15:21:31: 
+2025-09-29T15:21:33:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:33:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:33:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:33:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:33: [?25h
+2025-09-29T15:21:33: 
+2025-09-29T15:21:33: > asset-management@0.1.0 dev
+2025-09-29T15:21:33: > next dev --turbopack
+2025-09-29T15:21:33: 
+2025-09-29T15:21:35:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:35:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:35:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:35:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:35: [?25h
+2025-09-29T15:21:35: 
+2025-09-29T15:21:35: > asset-management@0.1.0 dev
+2025-09-29T15:21:35: > next dev --turbopack
+2025-09-29T15:21:35: 
+2025-09-29T15:21:37:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:37:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:37:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:37:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:37: [?25h
+2025-09-29T15:21:37: 
+2025-09-29T15:21:37: > asset-management@0.1.0 dev
+2025-09-29T15:21:37: > next dev --turbopack
+2025-09-29T15:21:37: 
+2025-09-29T15:21:39:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:39:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:39:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:39:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:39: [?25h
+2025-09-29T15:21:39: 
+2025-09-29T15:21:39: > asset-management@0.1.0 dev
+2025-09-29T15:21:39: > next dev --turbopack
+2025-09-29T15:21:39: 
+2025-09-29T15:21:41:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:41:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:41:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:41:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:41: [?25h
+2025-09-29T15:21:41: 
+2025-09-29T15:21:41: > asset-management@0.1.0 dev
+2025-09-29T15:21:41: > next dev --turbopack
+2025-09-29T15:21:41: 
+2025-09-29T15:21:43:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:43:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:43:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:43:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:43: [?25h
+2025-09-29T15:21:44: 
+2025-09-29T15:21:44: > asset-management@0.1.0 dev
+2025-09-29T15:21:44: > next dev --turbopack
+2025-09-29T15:21:44: 
+2025-09-29T15:21:45:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:45:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:45:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:45:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:45: [?25h
+2025-09-29T15:21:46: 
+2025-09-29T15:21:46: > asset-management@0.1.0 dev
+2025-09-29T15:21:46: > next dev --turbopack
+2025-09-29T15:21:46: 
+2025-09-29T15:21:47:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:47:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:47:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:47:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:47: [?25h
+2025-09-29T15:21:48: 
+2025-09-29T15:21:48: > asset-management@0.1.0 dev
+2025-09-29T15:21:48: > next dev --turbopack
+2025-09-29T15:21:48: 
+2025-09-29T15:21:49:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:49:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:49:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:49:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:49: [?25h
+2025-09-29T15:21:50: 
+2025-09-29T15:21:50: > asset-management@0.1.0 dev
+2025-09-29T15:21:50: > next dev --turbopack
+2025-09-29T15:21:50: 
+2025-09-29T15:21:51:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:51:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:51:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:51:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:51: [?25h
+2025-09-29T15:21:51: 
+2025-09-29T15:21:51: > asset-management@0.1.0 dev
+2025-09-29T15:21:51: > next dev --turbopack
+2025-09-29T15:21:51: 
+2025-09-29T15:21:53:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:53:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:53:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:53:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:53: [?25h
+2025-09-29T15:21:53: 
+2025-09-29T15:21:53: > asset-management@0.1.0 dev
+2025-09-29T15:21:53: > next dev --turbopack
+2025-09-29T15:21:53: 
+2025-09-29T15:21:55:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:55:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:55:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:55:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:55: [?25h
+2025-09-29T15:21:55: 
+2025-09-29T15:21:55: > asset-management@0.1.0 dev
+2025-09-29T15:21:55: > next dev --turbopack
+2025-09-29T15:21:55: 
+2025-09-29T15:21:57:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:57:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:57:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:57:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:57: [?25h
+2025-09-29T15:21:57: 
+2025-09-29T15:21:57: > asset-management@0.1.0 dev
+2025-09-29T15:21:57: > next dev --turbopack
+2025-09-29T15:21:57: 
+2025-09-29T15:21:59:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:21:59:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:21:59:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:21:59:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:21:59: [?25h
+2025-09-29T15:21:59: 
+2025-09-29T15:21:59: > asset-management@0.1.0 dev
+2025-09-29T15:21:59: > next dev --turbopack
+2025-09-29T15:21:59: 
+2025-09-29T15:22:01:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:01:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:01:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:01:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:01: [?25h
+2025-09-29T15:22:02: 
+2025-09-29T15:22:02: > asset-management@0.1.0 dev
+2025-09-29T15:22:02: > next dev --turbopack
+2025-09-29T15:22:02: 
+2025-09-29T15:22:03:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:03:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:03:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:03:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:03: [?25h
+2025-09-29T15:22:04: 
+2025-09-29T15:22:04: > asset-management@0.1.0 dev
+2025-09-29T15:22:04: > next dev --turbopack
+2025-09-29T15:22:04: 
+2025-09-29T15:22:05:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:05:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:05:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:05:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:05: [?25h
+2025-09-29T15:22:06: 
+2025-09-29T15:22:06: > asset-management@0.1.0 dev
+2025-09-29T15:22:06: > next dev --turbopack
+2025-09-29T15:22:06: 
+2025-09-29T15:22:07:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:07:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:07:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:07:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:07: [?25h
+2025-09-29T15:22:08: 
+2025-09-29T15:22:08: > asset-management@0.1.0 dev
+2025-09-29T15:22:08: > next dev --turbopack
+2025-09-29T15:22:08: 
+2025-09-29T15:22:09:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:09:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:09:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:09:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:09: [?25h
+2025-09-29T15:22:09: 
+2025-09-29T15:22:09: > asset-management@0.1.0 dev
+2025-09-29T15:22:09: > next dev --turbopack
+2025-09-29T15:22:09: 
+2025-09-29T15:22:11:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:11:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:11:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:11:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:11: [?25h
+2025-09-29T15:22:11: 
+2025-09-29T15:22:11: > asset-management@0.1.0 dev
+2025-09-29T15:22:11: > next dev --turbopack
+2025-09-29T15:22:11: 
+2025-09-29T15:22:13:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:13:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:13:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:13:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:13: [?25h
+2025-09-29T15:22:13: 
+2025-09-29T15:22:13: > asset-management@0.1.0 dev
+2025-09-29T15:22:13: > next dev --turbopack
+2025-09-29T15:22:13: 
+2025-09-29T15:22:15:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:15:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:15:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:15:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:15: [?25h
+2025-09-29T15:22:15: 
+2025-09-29T15:22:15: 
+2025-09-29T15:22:15: > asset-management@0.1.0 dev
+2025-09-29T15:22:15: > next dev --turbopack
+2025-09-29T15:22:15: 
+2025-09-29T15:22:17:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:17:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:17:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:17:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:17: [?25h
+2025-09-29T15:22:17: 
+2025-09-29T15:22:17: > asset-management@0.1.0 dev
+2025-09-29T15:22:17: > next dev --turbopack
+2025-09-29T15:22:17: 
+2025-09-29T15:22:18:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:18:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:18:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:18:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:18: [?25h
+2025-09-29T15:22:18: 
+2025-09-29T15:22:19: 
+2025-09-29T15:22:19: > asset-management@0.1.0 dev
+2025-09-29T15:22:19: > next dev --turbopack
+2025-09-29T15:22:19: 
+2025-09-29T15:22:20:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:20:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:20:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:20:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:20: [?25h
+2025-09-29T15:22:21: 
+2025-09-29T15:22:21: > asset-management@0.1.0 dev
+2025-09-29T15:22:21: > next dev --turbopack
+2025-09-29T15:22:21: 
+2025-09-29T15:22:22:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:22:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:22:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:22:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:22: [?25h
+2025-09-29T15:22:23: 
+2025-09-29T15:22:23: > asset-management@0.1.0 dev
+2025-09-29T15:22:23: > next dev --turbopack
+2025-09-29T15:22:23: 
+2025-09-29T15:22:24:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:24:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:24:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:24:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:25: [?25h
+2025-09-29T15:22:25: 
+2025-09-29T15:22:25: > asset-management@0.1.0 dev
+2025-09-29T15:22:25: > next dev --turbopack
+2025-09-29T15:22:25: 
+2025-09-29T15:22:27:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:27:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:27:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:27:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:27: [?25h
+2025-09-29T15:22:27: 
+2025-09-29T15:22:27: > asset-management@0.1.0 dev
+2025-09-29T15:22:27: > next dev --turbopack
+2025-09-29T15:22:27: 
+2025-09-29T15:22:29:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:29:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:29:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:29:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:29: [?25h
+2025-09-29T15:22:29: 
+2025-09-29T15:22:29: > asset-management@0.1.0 dev
+2025-09-29T15:22:29: > next dev --turbopack
+2025-09-29T15:22:29: 
+2025-09-29T15:22:30:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:30:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:30:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:30:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:31: [?25h
+2025-09-29T15:22:31: 
+2025-09-29T15:22:31: > asset-management@0.1.0 dev
+2025-09-29T15:22:31: > next dev --turbopack
+2025-09-29T15:22:31: 
+2025-09-29T15:22:33:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:33:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:33:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:33:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:33: [?25h
+2025-09-29T15:22:33: 
+2025-09-29T15:22:33: > asset-management@0.1.0 dev
+2025-09-29T15:22:33: > next dev --turbopack
+2025-09-29T15:22:33: 
+2025-09-29T15:22:34:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:34:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:34:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:34:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:35: [?25h
+2025-09-29T15:22:35: 
+2025-09-29T15:22:35: > asset-management@0.1.0 dev
+2025-09-29T15:22:35: > next dev --turbopack
+2025-09-29T15:22:35: 
+2025-09-29T15:22:36:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:36:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:36:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:36:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:36: [?25h
+2025-09-29T15:22:37: 
+2025-09-29T15:22:37: > asset-management@0.1.0 dev
+2025-09-29T15:22:37: > next dev --turbopack
+2025-09-29T15:22:37: 
+2025-09-29T15:22:38:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:38:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:38:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:38:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:39: [?25h
+2025-09-29T15:22:39: 
+2025-09-29T15:22:39: 
+2025-09-29T15:22:39: > asset-management@0.1.0 dev
+2025-09-29T15:22:39: > next dev --turbopack
+2025-09-29T15:22:39: 
+2025-09-29T15:22:40:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:40:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:40:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:40:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:41: [?25h
+2025-09-29T15:22:41: 
+2025-09-29T15:22:41: > asset-management@0.1.0 dev
+2025-09-29T15:22:41: > next dev --turbopack
+2025-09-29T15:22:41: 
+2025-09-29T15:22:43:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:43:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:43:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:43:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:43: [?25h
+2025-09-29T15:22:43: 
+2025-09-29T15:22:43: > asset-management@0.1.0 dev
+2025-09-29T15:22:43: > next dev --turbopack
+2025-09-29T15:22:43: 
+2025-09-29T15:22:45:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:45:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:45:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:45:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:45: [?25h
+2025-09-29T15:22:45: 
+2025-09-29T15:22:45: > asset-management@0.1.0 dev
+2025-09-29T15:22:45: > next dev --turbopack
+2025-09-29T15:22:45: 
+2025-09-29T15:22:47:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:47:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:47:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:47:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:48: [?25h
+2025-09-29T15:22:48: 
+2025-09-29T15:22:48: > asset-management@0.1.0 dev
+2025-09-29T15:22:48: > next dev --turbopack
+2025-09-29T15:22:48: 
+2025-09-29T15:22:49:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:49:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:49:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:49:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:49: [?25h
+2025-09-29T15:22:50: 
+2025-09-29T15:22:50: > asset-management@0.1.0 dev
+2025-09-29T15:22:50: > next dev --turbopack
+2025-09-29T15:22:50: 
+2025-09-29T15:22:51:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:51:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:51:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:51:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:51: [?25h
+2025-09-29T15:22:52: 
+2025-09-29T15:22:52: > asset-management@0.1.0 dev
+2025-09-29T15:22:52: > next dev --turbopack
+2025-09-29T15:22:52: 
+2025-09-29T15:22:53:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:53:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:53:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:53:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:54: [?25h
+2025-09-29T15:22:54: 
+2025-09-29T15:22:54: > asset-management@0.1.0 dev
+2025-09-29T15:22:54: > next dev --turbopack
+2025-09-29T15:22:54: 
+2025-09-29T15:22:56:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:56:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:56:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:56:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:56: [?25h
+2025-09-29T15:22:56: 
+2025-09-29T15:22:56: > asset-management@0.1.0 dev
+2025-09-29T15:22:56: > next dev --turbopack
+2025-09-29T15:22:56: 
+2025-09-29T15:22:58:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:22:58:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:22:58:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:22:58:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:22:58: [?25h
+2025-09-29T15:22:58: 
+2025-09-29T15:22:58: > asset-management@0.1.0 dev
+2025-09-29T15:22:58: > next dev --turbopack
+2025-09-29T15:22:58: 
+2025-09-29T15:23:00:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:00:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:00:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:00:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:00: [?25h
+2025-09-29T15:23:00: 
+2025-09-29T15:23:00: 
+2025-09-29T15:23:00: > asset-management@0.1.0 dev
+2025-09-29T15:23:00: > next dev --turbopack
+2025-09-29T15:23:00: 
+2025-09-29T15:23:02:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:02:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:02:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:02:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:02: [?25h
+2025-09-29T15:23:03: 
+2025-09-29T15:23:03: > asset-management@0.1.0 dev
+2025-09-29T15:23:03: > next dev --turbopack
+2025-09-29T15:23:03: 
+2025-09-29T15:23:04:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:04:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:04:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:04:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:04: [?25h
+2025-09-29T15:23:05: 
+2025-09-29T15:23:05: > asset-management@0.1.0 dev
+2025-09-29T15:23:05: > next dev --turbopack
+2025-09-29T15:23:05: 
+2025-09-29T15:23:06:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:06:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:06:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:06:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:06: [?25h
+2025-09-29T15:23:07: 
+2025-09-29T15:23:07: > asset-management@0.1.0 dev
+2025-09-29T15:23:07: > next dev --turbopack
+2025-09-29T15:23:07: 
+2025-09-29T15:23:09:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:09:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:09:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:09:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:09: [?25h
+2025-09-29T15:23:09: 
+2025-09-29T15:23:09: > asset-management@0.1.0 dev
+2025-09-29T15:23:09: > next dev --turbopack
+2025-09-29T15:23:09: 
+2025-09-29T15:23:11:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:11:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:11:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:11:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:11: [?25h
+2025-09-29T15:23:11: 
+2025-09-29T15:23:11: > asset-management@0.1.0 dev
+2025-09-29T15:23:11: > next dev --turbopack
+2025-09-29T15:23:11: 
+2025-09-29T15:23:13:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:13:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:13:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:13:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:13: [?25h
+2025-09-29T15:23:14: 
+2025-09-29T15:23:14: > asset-management@0.1.0 dev
+2025-09-29T15:23:14: > next dev --turbopack
+2025-09-29T15:23:14: 
+2025-09-29T15:23:15:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:15:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:15:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:15:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:15: [?25h
+2025-09-29T15:23:16: 
+2025-09-29T15:23:16: > asset-management@0.1.0 dev
+2025-09-29T15:23:16: > next dev --turbopack
+2025-09-29T15:23:16: 
+2025-09-29T15:23:17:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:17:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:17:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:17:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:18: [?25h
+2025-09-29T15:23:18: 
+2025-09-29T15:23:18: > asset-management@0.1.0 dev
+2025-09-29T15:23:18: > next dev --turbopack
+2025-09-29T15:23:18: 
+2025-09-29T15:23:19:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:19:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:19:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:19:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:19: [?25h
+2025-09-29T15:23:20: 
+2025-09-29T15:23:20: > asset-management@0.1.0 dev
+2025-09-29T15:23:20: > next dev --turbopack
+2025-09-29T15:23:20: 
+2025-09-29T15:23:21:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:21:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:21:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:21:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:21: [?25h
+2025-09-29T15:23:22: 
+2025-09-29T15:23:22: > asset-management@0.1.0 dev
+2025-09-29T15:23:22: > next dev --turbopack
+2025-09-29T15:23:22: 
+2025-09-29T15:23:23:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:23:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:23:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:23:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:23: [?25h
+2025-09-29T15:23:24: 
+2025-09-29T15:23:24: > asset-management@0.1.0 dev
+2025-09-29T15:23:24: > next dev --turbopack
+2025-09-29T15:23:24: 
+2025-09-29T15:23:25:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:25:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:25:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:25:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:25: [?25h
+2025-09-29T15:23:26: 
+2025-09-29T15:23:26: > asset-management@0.1.0 dev
+2025-09-29T15:23:26: > next dev --turbopack
+2025-09-29T15:23:26: 
+2025-09-29T15:23:27:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:27:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:27:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:27:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:27: [?25h
+2025-09-29T15:23:27: 
+2025-09-29T15:23:28: 
+2025-09-29T15:23:28: > asset-management@0.1.0 dev
+2025-09-29T15:23:28: > next dev --turbopack
+2025-09-29T15:23:28: 
+2025-09-29T15:23:29:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:29:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:29:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:29:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:29: [?25h
+2025-09-29T15:23:29: 
+2025-09-29T15:23:29: > asset-management@0.1.0 dev
+2025-09-29T15:23:29: > next dev --turbopack
+2025-09-29T15:23:29: 
+2025-09-29T15:23:31:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:31:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:31:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:31:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:31: [?25h
+2025-09-29T15:23:32: 
+2025-09-29T15:23:32: > asset-management@0.1.0 dev
+2025-09-29T15:23:32: > next dev --turbopack
+2025-09-29T15:23:32: 
+2025-09-29T15:23:33:  ⚠ Invalid next.config.ts options detected: 
+2025-09-29T15:23:33:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
+2025-09-29T15:23:33:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
+2025-09-29T15:23:33:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
+2025-09-29T15:23:33: [?25h
+2025-09-29T15:23:34: 
+2025-09-29T15:23:34: > asset-management@0.1.0 dev
+2025-09-29T15:23:34: > next dev --turbopack
+2025-09-29T15:23:34: 
+2025-09-29T15:23:35: 
+2025-09-29T15:23:35: > asset-management@0.1.0 dev
+2025-09-29T15:23:35: > next dev --turbopack
+2025-09-29T15:23:35: 
+2025-09-29T15:23:36: 
+2025-09-29T15:23:36: > asset-management@0.1.0 dev
+2025-09-29T15:23:36: > next dev --turbopack
+2025-09-29T15:23:36: 
+2025-09-29T15:23:38:    ▲ Next.js 15.5.2 (Turbopack)
+2025-09-29T15:23:38:    - Local:        http://localhost:3000
+2025-09-29T15:23:38:    - Network:      http://103.197.191.12:3000
+2025-09-29T15:23:38:    - Environments: .env.development, .env
+2025-09-29T15:23:38:    - Experiments (use with caution):
+2025-09-29T15:23:38:      ✓ optimizeCss
+2025-09-29T15:23:38:      · webVitalsAttribution
+2025-09-29T15:23:38:      · optimizePackageImports
+2025-09-29T15:23:38: 
+2025-09-29T15:23:38:  ✓ Starting...
+2025-09-29T15:23:39: [?25h
+2025-09-29T15:23:40: 
+2025-09-29T15:23:40: > asset-management@0.1.0 dev
+2025-09-29T15:23:40: > next dev --turbopack
+2025-09-29T15:23:40: 
+2025-09-29T15:23:42: [?25h
+2025-09-29T15:23:42: 
+2025-09-29T15:23:42: > asset-management@0.1.0 dev
+2025-09-29T15:23:42: > next dev --turbopack
+2025-09-29T15:23:42: 
+2025-09-29T15:23:43: [?25h
+2025-09-29T15:23:44: 
+2025-09-29T15:23:44: > asset-management@0.1.0 dev
+2025-09-29T15:23:44: > next dev --turbopack
+2025-09-29T15:23:44: 
+2025-09-29T15:23:45: [?25h
+2025-09-29T15:23:46: 
+2025-09-29T15:23:46: > asset-management@0.1.0 dev
+2025-09-29T15:23:46: > next dev --turbopack
+2025-09-29T15:23:46: 
+2025-09-29T15:23:48: [?25h
+2025-09-29T15:23:48: 
+2025-09-29T15:23:49: 
+2025-09-29T15:23:49: > asset-management@0.1.0 dev
+2025-09-29T15:23:49: > next dev --turbopack
+2025-09-29T15:23:49: 
+2025-09-29T15:23:50: [?25h
+2025-09-29T15:23:50: 
+2025-09-29T15:23:50: > asset-management@0.1.0 dev
+2025-09-29T15:23:50: > next dev --turbopack
+2025-09-29T15:23:50: 
+2025-09-29T15:23:52: [?25h
+2025-09-29T15:23:52: 
+2025-09-29T15:23:52: > asset-management@0.1.0 dev
+2025-09-29T15:23:52: > next dev --turbopack
+2025-09-29T15:23:52: 
+2025-09-29T15:23:54: [?25h
+2025-09-29T15:23:54: 
+2025-09-29T15:23:54: > asset-management@0.1.0 dev
+2025-09-29T15:23:54: > next dev --turbopack
+2025-09-29T15:23:54: 
+2025-09-29T15:23:56: [?25h
+2025-09-29T15:23:56: 
+2025-09-29T15:23:56: 
+2025-09-29T15:23:56: > asset-management@0.1.0 dev
+2025-09-29T15:23:56: > next dev --turbopack
+2025-09-29T15:23:56: 
+2025-09-29T15:23:58: [?25h
+2025-09-29T15:23:58: 
+2025-09-29T15:23:58: > asset-management@0.1.0 dev
+2025-09-29T15:23:58: > next dev --turbopack
+2025-09-29T15:23:58: 
+2025-09-29T15:24:00: [?25h
+2025-09-29T15:24:00: 
+2025-09-29T15:24:00: > asset-management@0.1.0 dev
+2025-09-29T15:24:00: > next dev --turbopack
+2025-09-29T15:24:00: 
+2025-09-29T15:24:02: [?25h
+2025-09-29T15:24:02: 
+2025-09-29T15:24:02: 
+2025-09-29T15:24:02: > asset-management@0.1.0 dev
+2025-09-29T15:24:02: > next dev --turbopack
+2025-09-29T15:24:02: 
+2025-09-29T15:24:04: [?25h
+2025-09-29T15:24:04: 
+2025-09-29T15:24:04: > asset-management@0.1.0 dev
+2025-09-29T15:24:04: > next dev --turbopack
+2025-09-29T15:24:04: 
+2025-09-29T15:24:06: [?25h
+2025-09-29T15:24:06: 
+2025-09-29T15:24:06: > asset-management@0.1.0 dev
+2025-09-29T15:24:06: > next dev --turbopack
+2025-09-29T15:24:06: 
+2025-09-29T15:24:08: [?25h
+2025-09-29T15:24:08: 
+2025-09-29T15:24:08: > asset-management@0.1.0 dev
+2025-09-29T15:24:08: > next dev --turbopack
+2025-09-29T15:24:08: 
+2025-09-29T15:24:09: [?25h
+2025-09-29T15:24:10: 
+2025-09-29T15:24:10: > asset-management@0.1.0 dev
+2025-09-29T15:24:10: > next dev --turbopack
+2025-09-29T15:24:10: 
+2025-09-29T15:24:11: [?25h
+2025-09-29T15:24:11: 
+2025-09-29T15:24:12: 
+2025-09-29T15:24:12: > asset-management@0.1.0 dev
+2025-09-29T15:24:12: > next dev --turbopack
+2025-09-29T15:24:12: 
+2025-09-29T15:24:13: [?25h
+2025-09-29T15:24:14: 
+2025-09-29T15:24:14: > asset-management@0.1.0 dev
+2025-09-29T15:24:14: > next dev --turbopack
+2025-09-29T15:24:14: 
+2025-09-29T15:24:15: [?25h
+2025-09-29T15:24:16: 
+2025-09-29T15:24:16: > asset-management@0.1.0 dev
+2025-09-29T15:24:16: > next dev --turbopack
+2025-09-29T15:24:16: 
+2025-09-29T15:24:17: [?25h
+2025-09-29T15:24:18: 
+2025-09-29T15:24:18: > asset-management@0.1.0 dev
+2025-09-29T15:24:18: > next dev --turbopack
+2025-09-29T15:24:18: 
+2025-09-29T15:24:19: [?25h
+2025-09-29T15:24:19: 
+2025-09-29T15:24:19: > asset-management@0.1.0 dev
+2025-09-29T15:24:19: > next dev --turbopack
+2025-09-29T15:24:19: 
+2025-09-29T15:24:21: [?25h
+2025-09-29T15:24:21: 
+2025-09-29T15:24:21: > asset-management@0.1.0 dev
+2025-09-29T15:24:21: > next dev --turbopack
+2025-09-29T15:24:21: 
+2025-09-29T15:24:23: [?25h
+2025-09-29T15:24:23: 
+2025-09-29T15:24:23: > asset-management@0.1.0 dev
+2025-09-29T15:24:23: > next dev --turbopack
+2025-09-29T15:24:23: 
+2025-09-29T15:24:25: [?25h
+2025-09-29T15:24:25: 
+2025-09-29T15:24:25: 
+2025-09-29T15:24:25: > asset-management@0.1.0 dev
+2025-09-29T15:24:25: > next dev --turbopack
+2025-09-29T15:24:25: 
+2025-09-29T15:24:27: [?25h
+2025-09-29T15:24:27: 
+2025-09-29T15:24:27: > asset-management@0.1.0 dev
+2025-09-29T15:24:27: > next dev --turbopack
+2025-09-29T15:24:27: 
+2025-09-29T15:24:29: [?25h
+2025-09-29T15:24:29: 
+2025-09-29T15:24:29: > asset-management@0.1.0 dev
+2025-09-29T15:24:29: > next dev --turbopack
+2025-09-29T15:24:29: 
+2025-09-29T15:24:31: [?25h
+2025-09-29T15:24:31: 
+2025-09-29T15:24:31: > asset-management@0.1.0 dev
+2025-09-29T15:24:31: > next dev --turbopack
+2025-09-29T15:24:31: 
+2025-09-29T15:24:33: [?25h
+2025-09-29T15:24:33: 
+2025-09-29T15:24:33: 
+2025-09-29T15:24:33: > asset-management@0.1.0 dev
+2025-09-29T15:24:33: > next dev --turbopack
+2025-09-29T15:24:33: 
+2025-09-29T15:24:35: [?25h
+2025-09-29T15:24:35: 
+2025-09-29T15:24:35: > asset-management@0.1.0 dev
+2025-09-29T15:24:35: > next dev --turbopack
+2025-09-29T15:24:35: 
+2025-09-29T15:24:37: [?25h
+2025-09-29T15:24:37: 
+2025-09-29T15:24:37: > asset-management@0.1.0 dev
+2025-09-29T15:24:37: > next dev --turbopack
+2025-09-29T15:24:37: 
+2025-09-29T15:24:39: [?25h
+2025-09-29T15:24:39: 
+2025-09-29T15:24:39: > asset-management@0.1.0 dev
+2025-09-29T15:24:39: > next dev --turbopack
+2025-09-29T15:24:39: 
+2025-09-29T15:24:41: [?25h
+2025-09-29T15:24:42: 
+2025-09-29T15:24:42: > asset-management@0.1.0 dev
+2025-09-29T15:24:42: > next dev --turbopack
+2025-09-29T15:24:42: 
+2025-09-29T15:24:43: [?25h
+2025-09-29T15:24:44: 
+2025-09-29T15:24:44: > asset-management@0.1.0 dev
+2025-09-29T15:24:44: > next dev --turbopack
+2025-09-29T15:24:44: 
+2025-09-29T15:24:45: [?25h
+2025-09-29T15:24:46: 
+2025-09-29T15:24:46: > asset-management@0.1.0 dev
+2025-09-29T15:24:46: > next dev --turbopack
+2025-09-29T15:24:46: 
+2025-09-29T15:24:47: [?25h
+2025-09-29T15:24:48: 
+2025-09-29T15:24:48: > asset-management@0.1.0 dev
+2025-09-29T15:24:48: > next dev --turbopack
+2025-09-29T15:24:48: 
+2025-09-29T15:24:49: [?25h
+2025-09-29T15:24:50: 
+2025-09-29T15:24:50: > asset-management@0.1.0 dev
+2025-09-29T15:24:50: > next dev --turbopack
+2025-09-29T15:24:50: 
+2025-09-29T15:24:51: [?25h
+2025-09-29T15:24:52: 
+2025-09-29T15:24:52: > asset-management@0.1.0 dev
+2025-09-29T15:24:52: > next dev --turbopack
+2025-09-29T15:24:52: 
+2025-09-29T15:24:53: [?25h
+2025-09-29T15:24:54: 
+2025-09-29T15:24:54: > asset-management@0.1.0 dev
+2025-09-29T15:24:54: > next dev --turbopack
+2025-09-29T15:24:54: 
+2025-09-29T15:24:55: [?25h
+2025-09-29T15:24:56: 
+2025-09-29T15:24:56: > asset-management@0.1.0 dev
+2025-09-29T15:24:56: > next dev --turbopack
+2025-09-29T15:24:56: 
+2025-09-29T15:24:57: [?25h
+2025-09-29T15:24:58: 
+2025-09-29T15:24:58: > asset-management@0.1.0 dev
+2025-09-29T15:24:58: > next dev --turbopack
+2025-09-29T15:24:58: 
+2025-09-29T15:24:59: [?25h
+2025-09-29T15:25:00: 
+2025-09-29T15:25:00: > asset-management@0.1.0 dev
+2025-09-29T15:25:00: > next dev --turbopack
+2025-09-29T15:25:00: 
+2025-09-29T15:25:02: [?25h
+2025-09-29T15:25:02: 
+2025-09-29T15:25:02: > asset-management@0.1.0 dev
+2025-09-29T15:25:02: > next dev --turbopack
+2025-09-29T15:25:02: 
+2025-09-29T15:25:04: [?25h
+2025-09-29T15:25:04: 
+2025-09-29T15:25:04: > asset-management@0.1.0 dev
+2025-09-29T15:25:04: > next dev --turbopack
+2025-09-29T15:25:04: 
+2025-09-29T15:25:06: [?25h
+2025-09-29T15:25:06: 
+2025-09-29T15:25:06: > asset-management@0.1.0 dev
+2025-09-29T15:25:06: > next dev --turbopack
+2025-09-29T15:25:06: 
+2025-09-29T15:25:08: [?25h
+2025-09-29T15:25:08: 
+2025-09-29T15:25:08: > asset-management@0.1.0 dev
+2025-09-29T15:25:08: > next dev --turbopack
+2025-09-29T15:25:08: 
+2025-09-29T15:25:10: [?25h
+2025-09-29T15:25:10: 
+2025-09-29T15:25:11: 
+2025-09-29T15:25:11: > asset-management@0.1.0 dev
+2025-09-29T15:25:11: > next dev --turbopack
+2025-09-29T15:25:11: 
+2025-09-29T15:25:13: [?25h
+2025-09-29T15:25:13: 
+2025-09-29T15:25:13: > asset-management@0.1.0 dev
+2025-09-29T15:25:13: > next dev --turbopack
+2025-09-29T15:25:13: 
+2025-09-29T15:25:15: [?25h
+2025-09-29T15:25:15: 
+2025-09-29T15:25:15: > asset-management@0.1.0 dev
+2025-09-29T15:25:15: > next dev --turbopack
+2025-09-29T15:25:15: 
+2025-09-29T15:25:17: [?25h
+2025-09-29T15:25:17: 
+2025-09-29T15:25:17: > asset-management@0.1.0 dev
+2025-09-29T15:25:17: > next dev --turbopack
+2025-09-29T15:25:17: 
+2025-09-29T15:25:19: [?25h
+2025-09-29T15:25:19: 
+2025-09-29T15:25:19: > asset-management@0.1.0 dev
+2025-09-29T15:25:19: > next dev --turbopack
+2025-09-29T15:25:19: 
+2025-09-29T15:25:21: [?25h
+2025-09-29T15:25:21: 
+2025-09-29T15:25:21: > asset-management@0.1.0 dev
+2025-09-29T15:25:21: > next dev --turbopack
+2025-09-29T15:25:21: 
+2025-09-29T15:25:23: [?25h
+2025-09-29T15:25:23: 
+2025-09-29T15:25:23: > asset-management@0.1.0 dev
+2025-09-29T15:25:23: > next dev --turbopack
+2025-09-29T15:25:23: 
+2025-09-29T15:25:25: [?25h
+2025-09-29T15:25:25: 
+2025-09-29T15:25:25: > asset-management@0.1.0 dev
+2025-09-29T15:25:25: > next dev --turbopack
+2025-09-29T15:25:25: 
+2025-09-29T15:25:27: [?25h
+2025-09-29T15:25:27: 
+2025-09-29T15:25:27: > asset-management@0.1.0 dev
+2025-09-29T15:25:27: > next dev --turbopack
+2025-09-29T15:25:27: 
+2025-09-29T15:25:29: [?25h
+2025-09-29T15:25:29: 
+2025-09-29T15:25:29: > asset-management@0.1.0 dev
+2025-09-29T15:25:29: > next dev --turbopack
+2025-09-29T15:25:29: 
+2025-09-29T15:25:31: [?25h
+2025-09-29T15:25:31: 
+2025-09-29T15:25:31: 
+2025-09-29T15:25:31: > asset-management@0.1.0 dev
+2025-09-29T15:25:31: > next dev --turbopack
+2025-09-29T15:25:31: 
+2025-09-29T15:25:32: [?25h
+2025-09-29T15:25:33: 
+2025-09-29T15:25:33: > asset-management@0.1.0 dev
+2025-09-29T15:25:33: > next dev --turbopack
+2025-09-29T15:25:33: 
+2025-09-29T15:25:34: [?25h
+2025-09-29T15:25:35: 
+2025-09-29T15:25:35: > asset-management@0.1.0 dev
+2025-09-29T15:25:35: > next dev --turbopack
+2025-09-29T15:25:35: 
+2025-09-29T15:25:36: [?25h
+2025-09-29T15:25:36: 
+2025-09-29T15:57:17: 
+2025-09-29T15:57:17: > asset-management@0.1.0 dev
+2025-09-29T15:57:17: > next dev --turbopack
+2025-09-29T15:57:17: 
+2025-09-29T15:57:19:    ▲ Next.js 15.5.2 (Turbopack)
+2025-09-29T15:57:19:    - Local:        http://localhost:3000
+2025-09-29T15:57:19:    - Network:      http://103.197.191.12:3000
+2025-09-29T15:57:19:    - Environments: .env.development, .env
+2025-09-29T15:57:19:    - Experiments (use with caution):
+2025-09-29T15:57:19:      ✓ optimizeCss
+2025-09-29T15:57:19:      · webVitalsAttribution
+2025-09-29T15:57:19:      · optimizePackageImports
+2025-09-29T15:57:19: 
+2025-09-29T15:57:19:  ✓ Starting...
+2025-09-29T15:57:21:  ✓ Ready in 1800ms
+2025-09-29T15:59:37:  ○ Compiling /api/auth/login ...
+2025-09-29T15:59:41:  ✓ Compiled /api/auth/login in 4.4s
+2025-09-29T15:59:42:  POST /api/auth/login 401 in 5380ms
+2025-09-29T15:59:42: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`password`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`role`, `main`.`users`.`isActive`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt`, `main`.`users`.`lastLogin`, `main`.`users`.`department`, `main`.`users`.`position` FROM `main`.`users` WHERE (`main`.`users`.`email` = ? AND 1=1) LIMIT ? OFFSET ?
+2025-09-29T16:02:11: prisma:query SELECT 1
+2025-09-29T16:02:11: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`password`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`role`, `main`.`users`.`isActive`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt`, `main`.`users`.`lastLogin`, `main`.`users`.`department`, `main`.`users`.`position` FROM `main`.`users` WHERE (`main`.`users`.`email` = ? AND 1=1) LIMIT ? OFFSET ?
+2025-09-29T16:02:12: prisma:query UPDATE `main`.`users` SET `lastLogin` = ?, `updatedAt` = ? WHERE (`main`.`users`.`id` = ? AND 1=1) RETURNING `id` AS `id`, `email` AS `email`, `username` AS `username`, `password` AS `password`, `firstName` AS `firstName`, `lastName` AS `lastName`, `role` AS `role`, `isActive` AS `isActive`, `createdAt` AS `createdAt`, `updatedAt` AS `updatedAt`, `lastLogin` AS `lastLogin`, `department` AS `department`, `position` AS `position`
+2025-09-29T16:02:12: prisma:query INSERT INTO `main`.`audit_logs` (`id`, `userId`, `action`, `resource`, `resourceId`, `oldValues`, `newValues`, `ipAddress`, `userAgent`, `timestamp`) VALUES (?,?,?,?,?,?,?,?,?,?) RETURNING `id` AS `id`, `userId` AS `userId`, `action` AS `action`, `resource` AS `resource`, `resourceId` AS `resourceId`, `oldValues` AS `oldValues`, `newValues` AS `newValues`, `ipAddress` AS `ipAddress`, `userAgent` AS `userAgent`, `timestamp` AS `timestamp`
+2025-09-29T16:02:12:  POST /api/auth/login 200 in 886ms
+2025-09-29T16:11:45:  ○ Compiling / ...
+2025-09-29T16:12:01:  ✓ Compiled / in 16.6s
+2025-09-29T16:12:02:  HEAD / 200 in 18052ms
+2025-09-29T16:17:54:  GET / 200 in 411ms
+2025-09-29T16:17:54:  ⚠ Blocked cross-origin request from 103.197.191.12 to /_next/* resource. To allow this, configure "allowedDevOrigins" in next.config
+2025-09-29T16:17:54: Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+2025-09-29T16:17:55:  ○ Compiling /api/auth/me ...
+2025-09-29T16:17:55:  ✓ Compiled /api/auth/me in 775ms
+2025-09-29T16:17:56: Middleware: Authorization header: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImNtZmxhNWg5dDAwMDAzNzFqd242cTB1dXMiLCJlbWFpbCI6InJpeWFubmFsZmlhbnN5YWhAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIiwiZGVwYXJ0bWVudCI6IkFkbWluaXN0cmF0aW9uIiwiaWF0IjoxNzU5MTM0ODg2LCJleHAiOjE3NTkyMjEyODZ9.UiFStFk7DTGGZjkYW6KjQLKQZa-YU5FQJkIGA3Qvk9Y
+2025-09-29T16:17:56: Middleware: Extracted token: Token exists
+2025-09-29T16:17:56: Middleware: Token verification result: Valid
+2025-09-29T16:17:56: prisma:query SELECT 1
+2025-09-29T16:17:56: prisma:query SELECT `main`.`users`.`id`, `main`.`users`.`email`, `main`.`users`.`username`, `main`.`users`.`firstName`, `main`.`users`.`lastName`, `main`.`users`.`role`, `main`.`users`.`department`, `main`.`users`.`position`, `main`.`users`.`isActive`, `main`.`users`.`createdAt`, `main`.`users`.`updatedAt`, `main`.`users`.`lastLogin` FROM `main`.`users` WHERE (`main`.`users`.`id` = ? AND 1=1) LIMIT ? OFFSET ?
+2025-09-29T16:17:56:  GET /api/auth/me 200 in 1658ms
+2025-09-29T16:17:57:  ○ Compiling /dashboard ...
+2025-09-29T16:18:21:  GET / 200 in 11511ms
+2025-09-29T16:19:44:  GET / 200 in 26346ms
+2025-09-29T16:19:56:  ✓ Compiled /dashboard in 120.2s
+2025-09-29T16:25:14:  GET / 200 in 323ms
+2025-09-29T17:09:07:  GET / 200 in 228ms
+2025-09-29T17:54:29:  GET / 200 in 195ms
+2025-09-29T17:54:54:  ○ Compiling /favicon.ico ...
+2025-09-29T17:54:54:  ✓ Compiled /favicon.ico in 646ms
+2025-09-29T17:54:54:  GET /favicon.ico?favicon.0b3bf435.ico 200 in 1047ms

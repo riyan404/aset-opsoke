@@ -1,0 +1,3 @@
+{
+  "/api/watermarks/[department]/route": "app/api/watermarks/[department]/route.js"
+}

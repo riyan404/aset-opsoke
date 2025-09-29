@@ -1,0 +1,11 @@
+{
+  "pages": {
+    "/api/watermarks/[department]/route": [
+      "static/chunks/7293a2ff163e4a40.js",
+      "static/chunks/91adb7bdb9870c6a.js",
+      "static/chunks/8f08197ca88adbd9.js",
+      "static/chunks/75a3f12660976f11.js",
+      "static/chunks/turbopack-30f1b361907f3712.js"
+    ]
+  }
+}

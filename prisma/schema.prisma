@@ -1,10 +1,16 @@
 generator client {
   provider = "prisma-client-js"
+  // Memory optimization: Use binary engine for smaller footprint
+  engineType = "binary"
+  // Optimize generated client size
+  binaryTargets = ["native"]
+  // Reduce client bundle size
+  output = "../node_modules/.prisma/client"
 }
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./dev.db"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -21,13 +27,13 @@ model User {
   lastLogin            DateTime?
   department           String?
   position             UserPosition?
-  updatedAssets        Asset[]        @relation("AssetUpdatedBy")
   createdAssets        Asset[]        @relation("AssetCreatedBy")
+  updatedAssets        Asset[]        @relation("AssetUpdatedBy")
   auditLogs            AuditLog[]
-  updatedDigitalAssets DigitalAsset[] @relation("DigitalAssetUpdatedBy")
   createdDigitalAssets DigitalAsset[] @relation("DigitalAssetCreatedBy")
-  updatedDocuments     Document[]     @relation("DocumentUpdatedBy")
+  updatedDigitalAssets DigitalAsset[] @relation("DigitalAssetUpdatedBy")
   createdDocuments     Document[]     @relation("DocumentCreatedBy")
+  updatedDocuments     Document[]     @relation("DocumentUpdatedBy")
 
   @@map("users")
 }
@@ -58,8 +64,8 @@ model Asset {
   createdById   String
   updatedById   String
   audits        AssetAudit[]
-  updatedBy     User           @relation("AssetUpdatedBy", fields: [updatedById], references: [id])
   createdBy     User           @relation("AssetCreatedBy", fields: [createdById], references: [id])
+  updatedBy     User           @relation("AssetUpdatedBy", fields: [updatedById], references: [id])
   maintenances  Maintenance[]
 
   @@map("assets")
@@ -101,7 +107,7 @@ model Document {
   id          String             @id @default(cuid())
   title       String
   description String?
-  category    DocumentCategory
+  category    String
   subcategory String?
   fileName    String
   filePath    String
@@ -119,8 +125,8 @@ model Document {
   watermark   String?
   approvals   DocumentApproval[]
   revisions   DocumentRevision[]
-  updatedBy   User               @relation("DocumentUpdatedBy", fields: [updatedById], references: [id])
   createdBy   User               @relation("DocumentCreatedBy", fields: [createdById], references: [id])
+  updatedBy   User               @relation("DocumentUpdatedBy", fields: [updatedById], references: [id])
 
   @@map("documents")
 }
@@ -178,6 +184,18 @@ model SystemSetting {
   @@map("system_settings")
 }
 
+model AutoBackupConfig {
+  id          String   @id @default(cuid())
+  isEnabled   Boolean  @default(false)
+  scheduleTime String  @default("02:00") // Format: HH:MM
+  retentionDays Int    @default(7) // Keep backups for N days
+  lastRunAt   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("auto_backup_configs")
+}
+
 model Category {
   id          String       @id @default(cuid())
   name        String
@@ -224,8 +242,8 @@ model DigitalAsset {
   updatedAt       DateTime          @updatedAt
   createdById     String
   updatedById     String
-  updatedBy       User              @relation("DigitalAssetUpdatedBy", fields: [updatedById], references: [id])
   createdBy       User              @relation("DigitalAssetCreatedBy", fields: [createdById], references: [id])
+  updatedBy       User              @relation("DigitalAssetUpdatedBy", fields: [updatedById], references: [id])
 
   @@map("digital_assets")
 }
@@ -244,16 +262,16 @@ model ArchiveReport {
 }
 
 model DepartmentPermission {
-  id               String     @id @default(cuid())
-  department       String
-  module           SystemModule
-  canRead          Boolean    @default(false)
-  canWrite         Boolean    @default(false)
-  canDelete        Boolean    @default(false)
-  isActive         Boolean    @default(true)
-  createdAt        DateTime   @default(now())
-  updatedAt        DateTime   @updatedAt
-  createdById      String
+  id          String       @id @default(cuid())
+  department  String
+  module      SystemModule
+  canRead     Boolean      @default(false)
+  canWrite    Boolean      @default(false)
+  canDelete   Boolean      @default(false)
+  isActive    Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  createdById String
 
   @@unique([department, module])
   @@map("department_permissions")
@@ -294,7 +312,7 @@ enum MaintenanceStatus {
   OVERDUE
 }
 
-enum DocumentCategory {
+enum DocumentType {
   POLICY
   PROCEDURE
   WORK_INSTRUCTION
