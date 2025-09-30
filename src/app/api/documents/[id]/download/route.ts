@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { readFile } from 'fs/promises'
+import { readFile, stat } from 'fs/promises'
+import { createReadStream } from 'fs'
 import path from 'path'
 import { prisma } from '@/lib/prisma'
 import { withAuth } from '@/lib/middleware'
@@ -33,9 +34,8 @@ export const GET = withAuth(async (
       )
     }
 
-    // Read file
     const filePath = path.join(process.cwd(), document.filePath)
-    const fileBuffer = await readFile(filePath)
+    const fileStats = await stat(filePath)
 
     // Create archive report for document access
     await createArchiveReport(
@@ -51,12 +51,41 @@ export const GET = withAuth(async (
     const headers = new Headers()
     headers.set('Content-Type', document.mimeType)
     headers.set('Content-Disposition', `attachment; filename="${document.fileName}"`)
-    headers.set('Content-Length', fileBuffer.length.toString())
+    headers.set('Content-Length', fileStats.size.toString())
 
-    return new NextResponse(new Uint8Array(fileBuffer), {
-      status: 200,
-      headers,
-    })
+    // Use streaming for large files (>5MB) to avoid memory issues
+    if (fileStats.size > 5 * 1024 * 1024) {
+      const stream = createReadStream(filePath)
+      
+      // Convert Node.js stream to Web Stream
+       const readableStream = new ReadableStream({
+         start(controller) {
+           stream.on('data', (chunk: Buffer) => {
+             controller.enqueue(new Uint8Array(chunk.buffer, chunk.byteOffset, chunk.byteLength))
+           })
+           
+           stream.on('end', () => {
+             controller.close()
+           })
+           
+           stream.on('error', (err) => {
+             controller.error(err)
+           })
+         }
+       })
+
+      return new NextResponse(readableStream, {
+        status: 200,
+        headers,
+      })
+    } else {
+      // Use buffer for smaller files
+      const fileBuffer = await readFile(filePath)
+      return new NextResponse(new Uint8Array(fileBuffer), {
+        status: 200,
+        headers,
+      })
+    }
   } catch (error) {
     console.error('Download document error:', error)
     return NextResponse.json(

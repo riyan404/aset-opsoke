@@ -39,12 +39,12 @@ const nextConfig: NextConfig = {
       'date-fns'
     ],
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB'],
-    // Memory optimization: External packages to reduce bundle size
-    serverComponentsExternalPackages: ['prisma', '@prisma/client', 'puppeteer'],
     // Enable memory optimization features
     optimizeCss: true,
     optimizeServerReact: true,
   },
+  // Memory optimization: External packages to reduce bundle size
+  serverExternalPackages: ['prisma', '@prisma/client', 'puppeteer'],
   // Turbopack configuration
   turbopack: {
     rules: {

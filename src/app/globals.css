@@ -3,18 +3,27 @@
 
 @custom-variant dark (&:is(.dark *));
 
-/* Custom Color Palette */
+/* Clean & Minimalist Color Palette */
 :root {
-  --color-primary: #187F7E;
+  /* New Brand Colors */
+  --color-primary: #006FFD;
+  --color-accent: #00D084;
+  --color-active: #3FB7AC;
+  --color-text-dark: #1F2937;
+  --color-text-medium: #6B7280;
+  --color-background: #FFFFFF;
+  --color-background-light: #F7F9FC;
+  
+  /* Legacy colors for backward compatibility */
   --color-secondary: #00AAA8;
-  --color-accent: #0EB6B4;
-  --color-background: #E8E8E8;
   --color-highlight: #D4AF37;
-  --color-primary-hover: #00AAA8;
-  --color-accent-light: rgba(14, 182, 180, 0.1);
+  --color-primary-hover: #005CE6;
+  --color-accent-light: rgba(0, 208, 132, 0.1);
   --color-secondary-light: rgba(0, 170, 168, 0.1);
   --color-highlight-light: rgba(212, 175, 55, 0.1);
-  --radius: 0.625rem;
+  
+  /* Shadcn/ui design tokens */
+  --radius: 0.5rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -48,28 +57,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Force light mode - override system dark mode preference */
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: light;
-  }
-
-  body {
-    background-color: #fafafa !important;
-    color: #0f172a !important;
-  }
-
-  /* Override any dark mode styles */
-  .dark\:border-slate-800,
-  .dark\:bg-slate-950,
-  .dark\:text-slate-50 {
-    border-color: #e5e7eb !important;
-    background-color: #ffffff !important;
-    color: #111827 !important;
-  }
-}
-
-/* Base styles */
+/* Clean & Minimalist Base Styles */
 * {
   box-sizing: border-box;
 }
@@ -84,29 +72,32 @@ body {
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--color-background);
-  color: #0f172a;
+  color: var(--color-text-dark);
   line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom scrollbar */
+/* Clean scrollbar design */
 ::-webkit-scrollbar {
   width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: var(--color-background-light);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-primary);
+  background: var(--color-text-medium);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-secondary);
+  background: var(--color-text-dark);
 }
 
-/* Loading animation */
+/* Smooth animations */
 .loading-spin {
   animation: spin 1s linear infinite;
 }
@@ -120,37 +111,29 @@ body {
   }
 }
 
-/* Brand Color Utilities */
+/* Clean Brand Color Utilities */
 .bg-brand-primary {
   background-color: var(--color-primary);
-}
-
-.bg-brand-secondary {
-  background-color: var(--color-secondary);
 }
 
 .bg-brand-accent {
   background-color: var(--color-accent);
 }
 
-.bg-brand-highlight {
-  background-color: var(--color-highlight);
+.bg-brand-active {
+  background-color: var(--color-active);
 }
 
 .text-brand-primary {
   color: var(--color-primary);
 }
 
-.text-brand-secondary {
-  color: var(--color-secondary);
-}
-
 .text-brand-accent {
   color: var(--color-accent);
 }
 
-.text-brand-highlight {
-  color: var(--color-highlight);
+.text-brand-active {
+  color: var(--color-active);
 }
 
 .border-brand-primary {
@@ -159,14 +142,6 @@ body {
 
 .hover\:bg-brand-primary-light:hover {
   background-color: var(--color-accent-light);
-}
-
-.hover\:bg-brand-secondary-light:hover {
-  background-color: var(--color-secondary-light);
-}
-
-.hover\:bg-brand-highlight-light:hover {
-  background-color: var(--color-highlight-light);
 }
 
 @theme inline {

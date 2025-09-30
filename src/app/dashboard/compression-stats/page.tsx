@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { HardDrive, Zap, FileText, TrendingDown, Info, BarChart, RefreshCw } from 'lucide-react'
+import { HardDrive, Activity, FileText, TrendingDown, Info, BarChart, RefreshCw } from 'lucide-react'
 
 export default function CompressionStatsPage() {
   const { token, user } = useAuth()
@@ -150,7 +150,7 @@ export default function CompressionStatsPage() {
         <Card>
           <CardContent className="p-6">
             <div className="flex items-center">
-              <Zap className="h-8 w-8 text-orange-600" />
+              <Activity className="h-8 w-8 text-orange-600" />
               <div className="ml-4">
                 <p className="text-2xl font-semibold text-gray-900">{Math.round((stats.totalSavings / stats.totalOriginalSize) * 100)}%</p>
                 <p className="text-gray-600">Total Efficiency</p>

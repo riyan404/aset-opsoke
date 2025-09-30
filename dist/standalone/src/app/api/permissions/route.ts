@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
+import { CacheHeaders, CACHE_TAGS } from '@/lib/cache-headers'
+import { revalidateTag } from 'next/cache'
 import jwt from 'jsonwebtoken'
 
 const prisma = new PrismaClient()
@@ -48,7 +50,15 @@ export async function GET(request: NextRequest) {
       ]
     })
 
-    return NextResponse.json({ permissions })
+    const response = NextResponse.json({ permissions })
+
+    // Apply no-cache headers for permissions data
+    const cacheHeaders = CacheHeaders.noCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Failed to fetch permissions:', error)
     return NextResponse.json(
@@ -112,7 +122,18 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    return NextResponse.json({ permission }, { status: existingPermission ? 200 : 201 })
+    // Invalidate permissions cache
+    revalidateTag(CACHE_TAGS.PERMISSIONS)
+
+    const response = NextResponse.json({ permission }, { status: existingPermission ? 200 : 201 })
+
+    // Apply no-cache headers
+    const cacheHeaders = CacheHeaders.noCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Failed to create/update permission:', error)
     return NextResponse.json(
@@ -145,7 +166,18 @@ export async function DELETE(request: NextRequest) {
       data: { isActive: false }
     })
 
-    return NextResponse.json({ message: 'Permission deleted successfully' })
+    // Invalidate permissions cache
+    revalidateTag(CACHE_TAGS.PERMISSIONS)
+
+    const response = NextResponse.json({ message: 'Permission deleted successfully' })
+
+    // Apply no-cache headers
+    const cacheHeaders = CacheHeaders.noCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Failed to delete permission:', error)
     return NextResponse.json(

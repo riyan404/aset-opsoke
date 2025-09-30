@@ -1,11 +1,8 @@
 import { writeFile, mkdir } from 'fs/promises'
-import { existsSync } from 'fs'
+import { existsSync, createWriteStream } from 'fs'
 import path from 'path'
 
 export async function saveFile(file: File, directory: string): Promise<string> {
-  const bytes = await file.arrayBuffer()
-  const buffer = Buffer.from(bytes)
-
   // Create uploads directory if it doesn't exist
   const uploadsDir = path.join(process.cwd(), 'uploads', directory)
   if (!existsSync(uploadsDir)) {
@@ -17,8 +14,43 @@ export async function saveFile(file: File, directory: string): Promise<string> {
   const filename = `${timestamp}-${file.name}`
   const filepath = path.join(uploadsDir, filename)
 
-  // Save file
-  await writeFile(filepath, buffer)
+  // Memory-optimized file saving using streams for large files
+  if (file.size > 10 * 1024 * 1024) { // Files larger than 10MB
+    // Use streaming for large files to avoid memory issues
+    const stream = createWriteStream(filepath)
+    const reader = file.stream().getReader()
+    
+    try {
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) break
+        
+        await new Promise<void>((resolve, reject) => {
+          stream.write(Buffer.from(value), (err: Error | null | undefined) => {
+            if (err) reject(err)
+            else resolve()
+          })
+        })
+      }
+      
+      await new Promise<void>((resolve, reject) => {
+        stream.end((err: Error | null | undefined) => {
+          if (err) reject(err)
+          else resolve()
+        })
+      })
+    } finally {
+      reader.releaseLock()
+    }
+  } else {
+    // Use buffer for smaller files (more efficient for small files)
+    const bytes = await file.arrayBuffer()
+    const buffer = Buffer.from(bytes)
+    await writeFile(filepath, buffer)
+    
+    // Explicitly clear buffer reference for garbage collection
+    ;(bytes as any).constructor = null
+  }
 
   // Return relative path
   return path.join('uploads', directory, filename)

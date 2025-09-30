@@ -4,6 +4,7 @@ import { useAuth } from '@/contexts/AuthContext'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Skeleton } from '@/components/ui/skeleton'
 import { 
   Users, 
   Package, 
@@ -18,7 +19,13 @@ import {
   Plus,
   Filter,
   BarChart3,
-  Activity
+  Activity,
+  Archive,
+  PieChart,
+  Download,
+  Upload,
+  Eye,
+  Settings
 } from 'lucide-react'
 import { useEffect, useState } from 'react'
 

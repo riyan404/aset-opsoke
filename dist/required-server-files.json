@@ -166,7 +166,7 @@
       "middlewarePrefetch": "flexible",
       "optimisticClientCache": true,
       "manualClientBasePath": false,
-      "cpus": 1,
+      "cpus": 3,
       "memoryBasedWorkersCount": false,
       "imgOptConcurrency": null,
       "imgOptTimeoutInSeconds": 7,
@@ -302,17 +302,17 @@
         "FID",
         "TTFB"
       ],
-      "serverComponentsExternalPackages": [
-        "prisma",
-        "@prisma/client",
-        "puppeteer"
-      ],
       "trustHostHeader": false,
       "isExperimentalCompile": false
     },
     "htmlLimitedBots": "[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight",
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
+    "serverExternalPackages": [
+      "prisma",
+      "@prisma/client",
+      "puppeteer"
+    ],
     "turbopack": {
       "rules": {
         "*.svg": {
@@ -323,12 +323,7 @@
         }
       },
       "root": "/home/riyan404/aset-opsoke"
-    },
-    "serverExternalPackages": [
-      "prisma",
-      "@prisma/client",
-      "puppeteer"
-    ]
+    }
   },
   "appDir": "/home/riyan404/aset-opsoke",
   "relativeAppDir": "",
@@ -349,7 +344,7 @@
     "dist/server/next-font-manifest.js",
     "dist/server/next-font-manifest.json",
     "dist/required-server-files.json",
-    "dist/static/chunks/6894abb7721b8923.css"
+    "dist/static/chunks/9a1b7c285284c583.css"
   ],
   "ignore": [
     "node_modules/next/dist/compiled/@ampproject/toolbox-optimizer/**/*"

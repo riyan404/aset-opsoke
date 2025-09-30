@@ -1,11 +1,12 @@
 {
   "pages": {
     "/api/permissions/digital-assets/route": [
-      "static/chunks/7293a2ff163e4a40.js",
+      "static/chunks/841efc8857dc3429.js",
       "static/chunks/91adb7bdb9870c6a.js",
-      "static/chunks/8f08197ca88adbd9.js",
-      "static/chunks/75a3f12660976f11.js",
-      "static/chunks/turbopack-30f1b361907f3712.js"
+      "static/chunks/8082ab48faca5ea1.js",
+      "static/chunks/63dba52cde864d84.js",
+      "static/chunks/7c50a4c85b217901.js",
+      "static/chunks/turbopack-eeb4eb6cde276d03.js"
     ]
   }
 }

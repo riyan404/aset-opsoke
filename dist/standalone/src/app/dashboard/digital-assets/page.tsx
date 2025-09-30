@@ -31,6 +31,8 @@ import {
   Tag,
   ImageIcon
 } from 'lucide-react'
+import { GoogleDriveButton } from '@/components/ui/google-drive-button'
+import { ActionsDropdown } from '@/components/ui/actions-dropdown'
 
 // Helper functions
 const parseTags = (tags: string | null): string[] => {
@@ -116,44 +118,54 @@ const AssetCard = React.memo(({
               <ImageIcon className="w-12 h-12 text-gray-400" />
             </div>
           )}
-          
-          {/* Overlay with actions */}
-          <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2">
-            <Button
-              size="sm"
-              variant="secondary"
-              onClick={() => onView(asset)}
-              className="bg-white/90 hover:bg-white text-gray-900"
-            >
-              <Eye className="w-4 h-4" />
-            </Button>
-            {canWrite && (
-              <Button
-                size="sm"
-                variant="secondary"
-                onClick={() => onEdit(asset)}
-                className="bg-white/90 hover:bg-white text-gray-900"
-              >
-                <Edit className="w-4 h-4" />
-              </Button>
-            )}
-            {canDelete && (
-              <Button
-                size="sm"
-                variant="destructive"
-                onClick={() => onDelete(asset)}
-                className="bg-red-500/90 hover:bg-red-600"
-              >
-                <Trash2 className="w-4 h-4" />
-              </Button>
-            )}
-          </div>
 
           {/* Aspect Ratio Badge */}
           <div className="absolute top-3 right-3">
             <Badge variant="secondary" className="bg-white/90 text-gray-900 text-xs">
               {asset.aspectRatio === 'RATIO_4_3' ? '4:3' : '9:16'}
             </Badge>
+          </div>
+        </div>
+
+        {/* Action Buttons - Responsive layout */}
+        <div className="px-3 py-3 bg-gray-50 border-b">
+          <div className="flex items-center gap-2 w-full min-w-0">
+            <GoogleDriveButton 
+              size="sm"
+              className="flex-1 min-w-0 truncate text-xs sm:text-sm"
+              onClick={() => {
+                if (asset.googleDriveLink) {
+                  window.open(asset.googleDriveLink, '_blank')
+                } else {
+                  console.log('No Google Drive link available for:', asset.contentName)
+                }
+              }}
+              disabled={!asset.googleDriveLink}
+            />
+            <div className="flex-shrink-0">
+              <ActionsDropdown
+                items={[
+                  {
+                    label: 'Lihat',
+                    icon: Eye,
+                    onClick: () => onView(asset),
+                    variant: 'default'
+                  },
+                  ...(canWrite ? [{
+                    label: 'Edit',
+                    icon: Edit,
+                    onClick: () => onEdit(asset),
+                    variant: 'default' as const
+                  }] : []),
+                  ...(canDelete ? [{
+                    label: 'Hapus',
+                    icon: Trash2,
+                    onClick: () => onDelete(asset),
+                    variant: 'destructive' as const
+                  }] : [])
+                ]}
+              />
+            </div>
           </div>
         </div>
 
@@ -392,12 +404,44 @@ export default function DigitalAssetsPage() {
     }
   }
 
-  const handleDeleteAsset = (asset: DigitalAsset) => {
-    if (userPermissions.canDelete) {
-      // Implement delete functionality
-      console.log('Delete asset:', asset.id)
-    } else {
+  const handleDeleteAsset = async (asset: DigitalAsset) => {
+    if (!userPermissions.canDelete) {
       showAccessDenied('Anda tidak memiliki izin untuk menghapus aset digital')
+      return
+    }
+
+    // Show confirmation dialog
+    const confirmed = window.confirm(
+      `Apakah Anda yakin ingin menghapus aset digital "${asset.name}"?\n\nTindakan ini tidak dapat dibatalkan.`
+    )
+
+    if (!confirmed) return
+
+    try {
+      const response = await fetch(`/api/digital-assets/${asset.id}`, {
+        method: 'DELETE',
+        headers: { 
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+      })
+
+      if (response.ok) {
+        // Remove asset from local state
+        setDigitalAssets(prev => prev.filter(a => a.id !== asset.id))
+        
+        // Show success message
+        alert('Aset digital berhasil dihapus')
+        
+        // Refresh the list to update pagination
+        fetchDigitalAssets(currentPage, debouncedSearchTerm, aspectRatioFilter)
+      } else {
+        const errorData = await response.json()
+        alert(`Gagal menghapus aset digital: ${errorData.error || 'Terjadi kesalahan'}`)
+      }
+    } catch (error) {
+      console.error('Error deleting asset:', error)
+      alert('Terjadi kesalahan saat menghapus aset digital')
     }
   }
 
@@ -570,97 +614,152 @@ export default function DigitalAssetsPage() {
 
       {/* Asset Detail Modal */}
       <Dialog open={showDetailModal} onOpenChange={setShowDetailModal}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>{selectedAsset?.contentName}</DialogTitle>
-            <DialogDescription>
+        <DialogContent className="max-w-6xl max-h-[95vh] overflow-hidden p-0">
+          <DialogHeader className="px-6 py-4 border-b bg-gradient-to-r from-blue-50 to-purple-50">
+            <DialogTitle className="text-xl font-bold text-gray-900">
+              {selectedAsset?.contentName}
+            </DialogTitle>
+            <DialogDescription className="text-gray-600">
               Detail informasi aset digital
             </DialogDescription>
           </DialogHeader>
           
           {selectedAsset && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex flex-col lg:flex-row h-full overflow-hidden">
               {/* Left Column - Image */}
-              <div className="space-y-4">
-                <div className="aspect-square bg-gray-100 rounded-lg overflow-hidden">
-                  {selectedAsset.previewFile ? (
-                    <img 
-                      src={selectedAsset.previewFile.startsWith('data:') ? selectedAsset.previewFile : `data:image/jpeg;base64,${selectedAsset.previewFile}`}
-                      alt={selectedAsset.contentName}
-                      className="w-full h-full object-contain"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center text-gray-400">
-                      <FileImage className="w-16 h-16" />
-                    </div>
-                  )}
+              <div className="lg:w-1/2 p-6 bg-gray-50 flex flex-col">
+                <div className="flex-1 bg-white rounded-xl shadow-sm overflow-hidden">
+                  <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center p-0">
+                    {selectedAsset.previewFile ? (
+                      <img 
+                        src={selectedAsset.previewFile.startsWith('data:') ? selectedAsset.previewFile : `data:image/jpeg;base64,${selectedAsset.previewFile}`}
+                        alt={selectedAsset.contentName}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div className="text-gray-400">
+                        <FileImage className="w-20 h-20 mx-auto mb-2" />
+                        <p className="text-sm">Tidak ada preview</p>
+                      </div>
+                    )}
+                  </div>
                 </div>
-                
-                {selectedAsset.googleDriveLink && (
-                  <Button
-                    onClick={() => selectedAsset.googleDriveLink && window.open(selectedAsset.googleDriveLink, '_blank')}
-                    className="w-full bg-teal-600 hover:bg-teal-700"
-                  >
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Buka di Google Drive
-                  </Button>
-                )}
               </div>
 
               {/* Right Column - Information */}
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-4">Informasi Dasar</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Nama:</span>
-                      <span className="font-medium">{selectedAsset.contentName}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Rasio Aspek:</span>
-                      <span className="font-medium">
-                        {selectedAsset.aspectRatio === 'RATIO_4_3' ? '4:3 (Landscape)' : '9:16 (Portrait)'}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Departemen:</span>
-                      <span className="font-medium">{selectedAsset.department}</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div>
-                  <h3 className="text-lg font-semibold mb-4">Informasi File</h3>
-                  <div className="space-y-3">
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Dibuat oleh:</span>
-                      <div className="flex items-center gap-2">
-                        <User className="w-4 h-4 text-gray-500" />
-                        <span className="font-medium">
-                          {selectedAsset.createdBy.firstName} {selectedAsset.createdBy.lastName}
+              <div className="lg:w-1/2 p-6 overflow-y-auto">
+                <div className="space-y-6">
+                  {/* Informasi Dasar */}
+                  <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                    <h3 className="text-lg font-semibold mb-4 text-gray-900 flex items-center">
+                      <div className="w-2 h-6 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full mr-3"></div>
+                      Informasi Dasar
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                        <span className="text-gray-600 font-medium">Nama:</span>
+                        <span className="font-semibold text-gray-900 break-words">{selectedAsset.contentName}</span>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                        <span className="text-gray-600 font-medium">Rasio Aspek:</span>
+                        <div className="flex items-center gap-2">
+                          <div className={`w-3 h-3 rounded-full ${selectedAsset.aspectRatio === 'RATIO_4_3' ? 'bg-blue-500' : 'bg-purple-500'}`}></div>
+                          <span className="font-semibold text-gray-900">
+                            {selectedAsset.aspectRatio === 'RATIO_4_3' ? '4:3 (Landscape)' : '9:16 (Portrait)'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                        <span className="text-gray-600 font-medium">Departemen:</span>
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-blue-100 to-purple-100 text-gray-800">
+                          {selectedAsset.department}
                         </span>
                       </div>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Tanggal dibuat:</span>
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-gray-500" />
-                        <span className="font-medium">{formatDate(selectedAsset.createdAt)}</span>
+                  </div>
+
+                  {/* Informasi File */}
+                  <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                    <h3 className="text-lg font-semibold mb-4 text-gray-900 flex items-center">
+                      <div className="w-2 h-6 bg-gradient-to-b from-green-500 to-teal-500 rounded-full mr-3"></div>
+                      Informasi File
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                        <span className="text-gray-600 font-medium">Dibuat oleh:</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                            <User className="w-4 h-4 text-white" />
+                          </div>
+                          <span className="font-semibold text-gray-900">
+                            {selectedAsset.createdBy.firstName} {selectedAsset.createdBy.lastName}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                        <span className="text-gray-600 font-medium">Tanggal dibuat:</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-teal-500 rounded-full flex items-center justify-center">
+                            <Calendar className="w-4 h-4 text-white" />
+                          </div>
+                          <span className="font-semibold text-gray-900">{formatDate(selectedAsset.createdAt)}</span>
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                        <span className="text-gray-600 font-medium">Terakhir diupdate:</span>
+                        <span className="font-semibold text-gray-900">{formatDate(selectedAsset.updatedAt)}</span>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                        <span className="text-gray-600 font-medium">Nama file:</span>
+                        <span className="font-mono text-sm bg-gray-100 px-2 py-1 rounded break-all">{selectedAsset.previewFileName}</span>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between gap-2">
+                        <span className="text-gray-600 font-medium">Ukuran file:</span>
+                        <span className="font-semibold text-gray-900">
+                          {selectedAsset.previewFileSize ? `${(selectedAsset.previewFileSize / 1024 / 1024).toFixed(2)} MB` : '-'}
+                        </span>
                       </div>
                     </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Terakhir diupdate:</span>
-                      <span className="font-medium">{formatDate(selectedAsset.updatedAt)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Nama file:</span>
-                      <span className="font-medium">{selectedAsset.previewFileName}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-gray-600">Ukuran file:</span>
-                      <span className="font-medium">
-                        {selectedAsset.previewFileSize ? `${(selectedAsset.previewFileSize / 1024 / 1024).toFixed(2)} MB` : '-'}
-                      </span>
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-100">
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Button
+                        onClick={() => selectedAsset.googleDriveLink && window.open(selectedAsset.googleDriveLink, '_blank')}
+                        className="flex-1 bg-gradient-to-r from-teal-600 to-teal-700 hover:from-teal-700 hover:to-teal-800 text-white shadow-lg"
+                        disabled={!selectedAsset.googleDriveLink}
+                      >
+                        <ExternalLink className="w-4 h-4 mr-2" />
+                        Buka di Google Drive
+                      </Button>
+                      {userPermissions.canWrite && (
+                        <Button
+                          onClick={() => {
+                            setShowDetailModal(false);
+                            // Edit functionality would be implemented here
+                            console.log('Edit asset:', selectedAsset);
+                          }}
+                          variant="outline"
+                          className="flex-1 border-blue-200 text-blue-700 hover:bg-blue-50"
+                        >
+                          <Edit className="w-4 h-4 mr-2" />
+                          Edit
+                        </Button>
+                      )}
+                      {userPermissions.canDelete && (
+                        <Button
+                          onClick={() => {
+                            setShowDetailModal(false);
+                            handleDeleteAsset(selectedAsset);
+                          }}
+                          variant="outline"
+                          className="flex-1 border-red-200 text-red-700 hover:bg-red-50"
+                        >
+                          <Trash2 className="w-4 h-4 mr-2" />
+                          Hapus
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </div>

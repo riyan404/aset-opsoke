@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { verifyToken } from '@/lib/middleware'
 import { prisma } from '@/lib/prisma'
+import { CacheHeaders, CACHE_TAGS } from '@/lib/cache-headers'
 
 export async function GET(request: NextRequest) {
   try {
@@ -209,7 +210,15 @@ export async function GET(request: NextRequest) {
     digitalAssetsByAspectRatio: digitalAssetsAspectRatioData
   }
 
-    return NextResponse.json(stats)
+    const response = NextResponse.json(stats)
+
+    // Apply short cache headers for dashboard stats (5 minutes)
+    const cacheHeaders = CacheHeaders.shortCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Dashboard stats error:', error)
     return NextResponse.json(

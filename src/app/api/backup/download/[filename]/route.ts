@@ -51,8 +51,6 @@ export async function GET(
       return NextResponse.json({ error: 'File backup tidak ditemukan' }, { status: 404 })
     }
 
-    // Read file
-    const fileBuffer = fs.readFileSync(filePath)
     const stats = fs.statSync(filePath)
 
     // Log the download activity
@@ -71,15 +69,49 @@ export async function GET(
       }
     })
 
-    // Return file as download
-    return new NextResponse(fileBuffer, {
-      status: 200,
-      headers: {
-        'Content-Type': 'application/octet-stream',
-        'Content-Disposition': `attachment; filename="${filename}"`,
-        'Content-Length': stats.size.toString(),
-      },
-    })
+    // Use streaming for large backup files (>10MB) to avoid memory issues
+    if (stats.size > 10 * 1024 * 1024) {
+      const stream = fs.createReadStream(filePath)
+      
+      // Convert Node.js stream to Web Stream
+      const readableStream = new ReadableStream({
+        start(controller) {
+          stream.on('data', (chunk: string | Buffer) => {
+            const buffer = typeof chunk === 'string' ? Buffer.from(chunk) : chunk
+            controller.enqueue(new Uint8Array(buffer.buffer, buffer.byteOffset, buffer.byteLength))
+          })
+          
+          stream.on('end', () => {
+            controller.close()
+          })
+          
+          stream.on('error', (err) => {
+            controller.error(err)
+          })
+        }
+      })
+
+      return new NextResponse(readableStream, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/octet-stream',
+          'Content-Disposition': `attachment; filename="${filename}"`,
+          'Content-Length': stats.size.toString(),
+        },
+      })
+    } else {
+      // Use buffer for smaller backup files
+      const fileBuffer = fs.readFileSync(filePath)
+      
+      return new NextResponse(fileBuffer, {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/octet-stream',
+          'Content-Disposition': `attachment; filename="${filename}"`,
+          'Content-Length': stats.size.toString(),
+        },
+      })
+    }
 
   } catch (error) {
     console.error('Download backup error:', error)

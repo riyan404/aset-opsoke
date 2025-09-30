@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { withRole } from '@/lib/middleware'
 import { logActivity } from '@/lib/audit'
+import { CacheHeaders, CACHE_TAGS } from '@/lib/cache-headers'
 import bcrypt from 'bcryptjs'
+import { revalidateTag } from 'next/cache'
 
 // Get all users (Admin only)
 export const GET = withRole(['ADMIN'])(async (request: NextRequest) => {
@@ -52,7 +54,7 @@ export const GET = withRole(['ADMIN'])(async (request: NextRequest) => {
       prisma.user.count({ where }),
     ])
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       users,
       pagination: {
         page,
@@ -61,6 +63,14 @@ export const GET = withRole(['ADMIN'])(async (request: NextRequest) => {
         pages: Math.ceil(total / limit),
       },
     })
+
+    // Apply no-cache headers for user data
+    const cacheHeaders = CacheHeaders.noCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Get users error:', error)
     return NextResponse.json(
@@ -164,10 +174,21 @@ export const POST = withRole(['ADMIN'])(async (request: NextRequest) => {
       userAgent
     )
 
-    return NextResponse.json({
+    // Invalidate users cache
+    revalidateTag(CACHE_TAGS.USERS)
+
+    const response = NextResponse.json({
       user,
       message: 'User created successfully',
     }, { status: 201 })
+
+    // Apply no-cache headers
+    const cacheHeaders = CacheHeaders.noCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Create user error:', error)
     return NextResponse.json(

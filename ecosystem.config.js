@@ -2,15 +2,15 @@ module.exports = {
   apps: [
     {
       name: 'asset-management-prod',
-      script: 'npm',
-      args: 'start',
+      script: 'node',
+      args: 'dist/standalone/server.js',
       cwd: '/home/riyan404/aset-opsoke',
       env: {
         NODE_ENV: 'production',
         PORT: 3001
       },
       env_file: '.env.production',
-      node_args: '--max-old-space-size=4096',
+      node_args: '--max-old-space-size=2048 --optimize-for-size',
       instances: 1,
       exec_mode: 'fork',
       watch: false,
@@ -30,7 +30,7 @@ module.exports = {
         PORT: 3000
       },
       env_file: '.env.development',
-      node_args: '--max-old-space-size=4096',
+      node_args: '--max-old-space-size=2048 --optimize-for-size',
       instances: 1,
       exec_mode: 'fork',
       watch: true,

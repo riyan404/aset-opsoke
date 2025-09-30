@@ -2,7 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { withRole } from '@/lib/middleware'
 import { logActivity } from '@/lib/audit'
+import { CacheHeaders, CACHE_TAGS } from '@/lib/cache-headers'
 import bcrypt from 'bcryptjs'
+import { revalidateTag } from 'next/cache'
 
 // Get user by ID (Admin only)
 export const GET = withRole(['ADMIN'])(async (request: NextRequest, { params }: { params: { id: string } }) => {
@@ -32,7 +34,15 @@ export const GET = withRole(['ADMIN'])(async (request: NextRequest, { params }: 
       )
     }
 
-    return NextResponse.json({ user })
+    const response = NextResponse.json({ user })
+
+    // Apply no-cache headers for user data
+    const cacheHeaders = CacheHeaders.noCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Get user error:', error)
     return NextResponse.json(
@@ -145,10 +155,21 @@ export const PUT = withRole(['ADMIN'])(async (request: NextRequest, { params }: 
       userAgent
     )
 
-    return NextResponse.json({
+    // Invalidate users cache
+    revalidateTag(CACHE_TAGS.USERS)
+
+    const response = NextResponse.json({
       user: updatedUser,
       message: 'User updated successfully',
     })
+
+    // Apply no-cache headers
+    const cacheHeaders = CacheHeaders.noCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Update user error:', error)
     return NextResponse.json(
@@ -241,9 +262,20 @@ export const DELETE = withRole(['ADMIN'])(async (request: NextRequest, { params 
       userAgent
     )
 
-    return NextResponse.json({
+    // Invalidate users cache
+    revalidateTag(CACHE_TAGS.USERS)
+
+    const response = NextResponse.json({
       message: 'User deleted successfully',
     })
+
+    // Apply no-cache headers
+    const cacheHeaders = CacheHeaders.noCache()
+    cacheHeaders.forEach((value, key) => {
+      response.headers.set(key, value)
+    })
+
+    return response
   } catch (error) {
     console.error('Delete user error:', error)
     return NextResponse.json(
