@@ -1,3 +1,0 @@
-{
-  "/api/backup/download/[filename]/route": "app/api/backup/download/[filename]/route.js"
-}

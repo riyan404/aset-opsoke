@@ -1,7 +1,0 @@
-2025-09-29T15:19:27:  ⚠ Invalid next.config.ts options detected: 
-2025-09-29T15:19:27:  ⚠     Unrecognized key(s) in object: 'serverComponentsExternalPackages' at "experimental"
-2025-09-29T15:19:27:  ⚠ See more info here: https://nextjs.org/docs/messages/invalid-next-config
-2025-09-29T15:19:27:  ⚠ `experimental.serverComponentsExternalPackages` has been moved to `serverExternalPackages`. Please update your next.config.ts file accordingly.
-2025-09-29T15:19:27:  ⚠ "next start" does not work with "output: standalone" configuration. Use "node .next/standalone/server.js" instead.
-2025-09-29T16:18:39: Error checking user permissions: Error: Database query timeout
-2025-09-29T16:18:39:     at Timeout._onTimeout (dist/server/chunks/[root-of-the-server]__b0917ff9._.js:1:1849)
