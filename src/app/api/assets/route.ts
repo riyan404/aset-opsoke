@@ -2,30 +2,33 @@ import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import { withAuth } from '@/lib/middleware'
 import { logActivity } from '@/lib/audit'
+import { generateUniqueBarcode } from '@/lib/barcode-generator'
 
 // Create asset
 export const POST = withAuth(async (request: NextRequest) => {
   try {
-    const {
-      name,
-      description,
-      category,
-      subcategory,
-      brand,
-      model,
-      serialNumber,
-      purchaseDate,
-      purchasePrice,
-      currentValue,
-      condition,
-      location,
-      department,
-      assignedTo,
-      warrantyUntil,
-      notes,
-      tags,
-      barcode,
-    } = await request.json()
+    const formData = await request.formData()
+    
+    // Extract form fields
+    const name = formData.get('name') as string
+    const description = formData.get('description') as string
+    const category = formData.get('category') as string
+    const subcategory = formData.get('subcategory') as string
+    const brand = formData.get('brand') as string
+    const model = formData.get('model') as string
+    const serialNumber = formData.get('serialNumber') as string
+    const purchaseDate = formData.get('purchaseDate') as string
+    const purchasePrice = formData.get('purchasePrice') as string
+    const currentValue = formData.get('currentValue') as string
+    const condition = formData.get('condition') as string
+    const location = formData.get('location') as string
+    const department = formData.get('department') as string
+    const assignedTo = formData.get('assignedTo') as string
+    const warrantyUntil = formData.get('warrantyUntil') as string
+    const notes = formData.get('notes') as string
+    const tags = formData.get('tags') as string
+    const barcode = formData.get('barcode') as string
+    const photo = formData.get('photo') as File | null
 
     if (!name || !category || !location) {
       return NextResponse.json(
@@ -47,15 +50,60 @@ export const POST = withAuth(async (request: NextRequest) => {
       }
     }
 
+    // Generate barcode automatically if not provided
+    let finalBarcode = barcode
+    if (!finalBarcode) {
+      try {
+        finalBarcode = await generateUniqueBarcode({ category })
+      } catch (barcodeError) {
+        console.error('Error generating barcode:', barcodeError)
+        return NextResponse.json(
+          { error: 'Failed to generate barcode' },
+          { status: 500 }
+        )
+      }
+    }
+
+    // Check if barcode already exists (for manually provided barcodes)
     if (barcode) {
       const existingAsset = await prisma.asset.findUnique({
-        where: { barcode },
+        where: { barcode: finalBarcode },
       })
       if (existingAsset) {
         return NextResponse.json(
           { error: 'Asset with this barcode already exists' },
           { status: 409 }
         )
+      }
+    }
+
+    // Handle photo upload if provided
+    let photoPath = null
+    if (photo && photo.size > 0) {
+      try {
+        // Create uploads directory if it doesn't exist
+        const fs = require('fs')
+        const path = require('path')
+        const uploadsDir = path.join(process.cwd(), 'public', 'uploads', 'assets')
+        
+        if (!fs.existsSync(uploadsDir)) {
+          fs.mkdirSync(uploadsDir, { recursive: true })
+        }
+
+        // Generate unique filename
+        const timestamp = Date.now()
+        const fileExtension = photo.name.split('.').pop() || 'jpg'
+        const fileName = `asset_${timestamp}.${fileExtension}`
+        const filePath = path.join(uploadsDir, fileName)
+
+        // Save file
+        const buffer = Buffer.from(await photo.arrayBuffer())
+        fs.writeFileSync(filePath, buffer)
+        
+        photoPath = `/uploads/assets/${fileName}`
+      } catch (photoError) {
+        console.error('Error saving photo:', photoError)
+        // Continue without photo if upload fails
       }
     }
 
@@ -79,7 +127,8 @@ export const POST = withAuth(async (request: NextRequest) => {
         warrantyUntil: warrantyUntil ? new Date(warrantyUntil) : null,
         notes,
         tags,
-        barcode,
+        barcode: finalBarcode,
+        photoPath,
         createdById: (request as any).user.id,
         updatedById: (request as any).user.id,
       },
@@ -143,17 +192,17 @@ export const GET = withAuth(async (request: NextRequest) => {
       AND: [
         search ? {
           OR: [
-            { name: { contains: search, mode: 'insensitive' as const } },
-            { description: { contains: search, mode: 'insensitive' as const } },
-            { brand: { contains: search, mode: 'insensitive' as const } },
-            { model: { contains: search, mode: 'insensitive' as const } },
-            { serialNumber: { contains: search, mode: 'insensitive' as const } },
-            { barcode: { contains: search, mode: 'insensitive' as const } },
+            { name: { contains: search } },
+            { description: { contains: search } },
+            { brand: { contains: search } },
+            { model: { contains: search } },
+            { serialNumber: { contains: search } },
+            { barcode: { contains: search } },
           ],
         } : {},
-        category ? { category: { contains: category, mode: 'insensitive' as const } } : {},
+        category ? { category: { contains: category } } : {},
         condition ? { condition: condition as any } : {},
-        location ? { location: { contains: location, mode: 'insensitive' as const } } : {},
+        location ? { location: { contains: location } } : {},
         // Default to showing only active assets unless explicitly requested otherwise
         isActive !== null ? { isActive: isActive === 'true' } : { isActive: true },
       ],
@@ -195,6 +244,12 @@ export const GET = withAuth(async (request: NextRequest) => {
         total,
         pages: Math.ceil(total / limit),
       },
+    }, {
+      headers: {
+        'Cache-Control': 'no-cache, no-store, must-revalidate',
+        'Pragma': 'no-cache',
+        'Expires': '0'
+      }
     })
   } catch (error) {
     console.error('Get assets error:', error)
