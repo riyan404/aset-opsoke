@@ -1,0 +1,5 @@
+# Production Environment Marker
+# This file indicates that this is a production environment
+# Created: $(date)
+ENVIRONMENT=production
+SERVER_TYPE=production

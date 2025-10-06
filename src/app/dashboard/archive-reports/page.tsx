@@ -5,7 +5,7 @@ import { useAuth } from '@/contexts/AuthContext'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { BarChart, Calendar, Download, Filter, FileText, ArrowUpCircle, ArrowDownCircle, RefreshCw, Trash2 } from 'lucide-react'
+import { BarChart, Calendar, Download, Filter, FileText, ArrowUpCircle, ArrowDownCircle, RefreshCw, Trash2, Shield } from 'lucide-react'
 
 interface ArchiveReport {
   id: string
@@ -36,6 +36,22 @@ interface Pagination {
 
 export default function ArchiveReportsPage() {
   const { token, user } = useAuth()
+  
+  // Admin-only access check
+  if (!user || user.role !== 'ADMIN') {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="text-center">
+          <Shield className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Akses Ditolak</h2>
+          <p className="text-gray-600">
+            Halaman ini hanya dapat diakses oleh Administrator.
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   const [reports, setReports] = useState<ArchiveReport[]>([])
   const [loading, setLoading] = useState(false)
   const [pagination, setPagination] = useState<Pagination>({

@@ -1,11 +1,8 @@
 generator client {
-  provider = "prisma-client-js"
-  // Memory optimization: Use binary engine for smaller footprint
-  engineType = "binary"
-  // Optimize generated client size
+  provider      = "prisma-client-js"
+  output        = "../node_modules/.prisma/client"
   binaryTargets = ["native"]
-  // Reduce client bundle size
-  output = "../node_modules/.prisma/client"
+  engineType    = "binary"
 }
 
 datasource db {
@@ -58,6 +55,7 @@ model Asset {
   notes         String?
   tags          String?
   barcode       String?        @unique
+  photoPath     String?
   isActive      Boolean        @default(true)
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
@@ -165,12 +163,26 @@ model AuditLog {
   resourceId String?
   oldValues  String?
   newValues  String?
+  details    String?
   ipAddress  String?
   userAgent  String?
   timestamp  DateTime @default(now())
   user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("audit_logs")
+}
+
+model ChatFile {
+  id         String   @id @default(cuid())
+  fileName   String
+  filePath   String
+  fileSize   Int
+  fileType   String
+  uploadedBy String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("chat_files")
 }
 
 model SystemSetting {
@@ -185,13 +197,13 @@ model SystemSetting {
 }
 
 model AutoBackupConfig {
-  id          String   @id @default(cuid())
-  isEnabled   Boolean  @default(false)
-  scheduleTime String  @default("02:00") // Format: HH:MM
-  retentionDays Int    @default(7) // Keep backups for N days
-  lastRunAt   DateTime?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id            String    @id @default(cuid())
+  isEnabled     Boolean   @default(false)
+  scheduleTime  String    @default("02:00")
+  retentionDays Int       @default(7)
+  lastRunAt     DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
 
   @@map("auto_backup_configs")
 }
@@ -360,4 +372,5 @@ enum SystemModule {
   AUDIT_LOGS
   REPORTS
   SETTINGS
+  AI_CHAT
 }

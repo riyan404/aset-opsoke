@@ -21,10 +21,10 @@ export const GET = withRole(['ADMIN'])(async (request: NextRequest) => {
       AND: [
         search ? {
           OR: [
-            { email: { contains: search, mode: 'insensitive' as const } },
-            { username: { contains: search, mode: 'insensitive' as const } },
-            { firstName: { contains: search, mode: 'insensitive' as const } },
-            { lastName: { contains: search, mode: 'insensitive' as const } },
+            { email: { contains: search } },
+          { username: { contains: search } },
+          { firstName: { contains: search } },
+          { lastName: { contains: search } },
           ],
         } : {},
         role ? { role: role as any } : {},

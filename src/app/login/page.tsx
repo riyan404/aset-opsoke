@@ -41,10 +41,10 @@ export default function LoginPage() {
       <div className="w-full max-w-lg">
         {/* Header Section */}
         <div className="text-center mb-8">
-          <div className="mx-auto w-16 h-16 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg mb-4">
+          <div className="mx-auto w-16 h-16 bg-gradient-to-r from-gray-800 to-black rounded-xl flex items-center justify-center shadow-lg mb-4">
             <Building2 className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Asset Management</h1>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Asset Management Orderkuota</h1>
           <p className="text-sm text-gray-600">
             Enterprise Asset & Document Management System
           </p>
@@ -117,7 +117,7 @@ export default function LoginPage() {
               <Button
                 type="submit"
                 className={cn(
-                  "w-full h-11 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700",
+                  "w-full h-11 bg-gradient-to-r from-gray-800 to-black hover:from-gray-900 hover:to-gray-800",
                   "text-white font-medium shadow-lg transition-all duration-200",
                   "disabled:opacity-50 disabled:cursor-not-allowed"
                 )}

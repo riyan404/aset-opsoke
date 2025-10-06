@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import jwt from 'jsonwebtoken'
+import { checkUserPermissions } from './permissions'
 
 export interface AuthenticatedRequest extends NextRequest {
   user?: {
@@ -55,6 +56,45 @@ export function withRole(roles: string[]) {
         return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
       }
       return handler(req, context)
+    })
+  }
+}
+
+export function withPermission(module: string, action: 'read' | 'write' | 'delete') {
+  return function(handler: (req: AuthenticatedRequest, context?: any) => Promise<NextResponse>) {
+    return withAuth(async (req: AuthenticatedRequest, context?: any) => {
+      if (!req.user) {
+        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+      }
+
+      try {
+        const permissions = await checkUserPermissions(req.user.department || '', req.user.role, module)
+        
+        let hasPermission = false
+        switch (action) {
+          case 'read':
+            hasPermission = permissions.canRead
+            break
+          case 'write':
+            hasPermission = permissions.canWrite
+            break
+          case 'delete':
+            hasPermission = permissions.canDelete
+            break
+        }
+
+        if (!hasPermission) {
+          return NextResponse.json({ 
+            error: 'Insufficient permissions',
+            required: `${action} access to ${module}` 
+          }, { status: 403 })
+        }
+
+        return handler(req, context)
+      } catch (error) {
+        console.error('Permission check error:', error)
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+      }
     })
   }
 }

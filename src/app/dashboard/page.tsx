@@ -155,11 +155,11 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-blue-600">
-              {stats?.totalAssets?.toLocaleString('id-ID') || '0'}
+              {stats?.activeAssets?.toLocaleString('id-ID') || '0'}
             </div>
             <div className="flex items-center justify-between mt-2">
               <p className="text-xs text-gray-600">
-                Aktif: {stats?.activeAssets?.toLocaleString('id-ID') || '0'}
+                Semua data: {stats?.totalAssets?.toLocaleString('id-ID') || '0'}
               </p>
               <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-700">
                 <Activity className="h-3 w-3 mr-1" />
@@ -179,11 +179,11 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-green-600">
-              {stats?.totalDocuments?.toLocaleString('id-ID') || '0'}
+              {stats?.activeDocuments?.toLocaleString('id-ID') || '0'}
             </div>
             <div className="flex items-center justify-between mt-2">
               <p className="text-xs text-gray-600">
-                Aktif: {stats?.activeDocuments?.toLocaleString('id-ID') || '0'}
+                Semua data: {stats?.totalDocuments?.toLocaleString('id-ID') || '0'}
               </p>
               <Badge variant="secondary" className="text-xs bg-green-100 text-green-700">
                 <Activity className="h-3 w-3 mr-1" />
@@ -203,11 +203,11 @@ export default function DashboardPage() {
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-purple-600">
-              {stats?.totalDigitalAssets?.toLocaleString('id-ID') || '0'}
+              {stats?.activeDigitalAssets?.toLocaleString('id-ID') || '0'}
             </div>
             <div className="flex items-center justify-between mt-2">
               <p className="text-xs text-gray-600">
-                Aktif: {stats?.activeDigitalAssets?.toLocaleString('id-ID') || '0'}
+                Semua data: {stats?.totalDigitalAssets?.toLocaleString('id-ID') || '0'}
               </p>
               <Badge variant="secondary" className="text-xs bg-purple-100 text-purple-700">
                 <Activity className="h-3 w-3 mr-1" />
@@ -237,10 +237,10 @@ export default function DashboardPage() {
               <Package className="h-8 w-8 text-blue-600 mx-auto mb-3" />
               <h3 className="font-semibold text-blue-900 mb-2">Aset Fisik</h3>
               <p className="text-3xl font-bold text-blue-600 mb-1">
-                {stats?.totalAssets || 0}
+                {stats?.activeAssets || 0}
               </p>
               <p className="text-sm text-blue-700 bg-blue-100/70 px-3 py-1 rounded-full">
-                {stats?.activeAssets || 0} aktif
+                {stats?.totalAssets || 0} semua data
               </p>
             </div>
             
@@ -248,10 +248,10 @@ export default function DashboardPage() {
               <FileText className="h-8 w-8 text-green-600 mx-auto mb-3" />
               <h3 className="font-semibold text-green-900 mb-2">Dokumen</h3>
               <p className="text-3xl font-bold text-green-600 mb-1">
-                {stats?.totalDocuments || 0}
+                {stats?.activeDocuments || 0}
               </p>
               <p className="text-sm text-green-700 bg-green-100/70 px-3 py-1 rounded-full">
-                {stats?.activeDocuments || 0} aktif
+                {stats?.totalDocuments || 0} semua data
               </p>
             </div>
             
@@ -259,10 +259,10 @@ export default function DashboardPage() {
               <Image className="h-8 w-8 text-purple-600 mx-auto mb-3" />
               <h3 className="font-semibold text-purple-900 mb-2">Aset Digital</h3>
               <p className="text-3xl font-bold text-purple-600 mb-1">
-                {stats?.totalDigitalAssets || 0}
+                {stats?.activeDigitalAssets || 0}
               </p>
               <p className="text-sm text-purple-700 bg-purple-100/70 px-3 py-1 rounded-full">
-                {stats?.activeDigitalAssets || 0} aktif
+                {stats?.totalDigitalAssets || 0} semua data
               </p>
             </div>
           </div>

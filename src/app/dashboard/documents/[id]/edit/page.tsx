@@ -13,6 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox'
 import { ArrowLeft, Save, FileText, Calendar } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
+import PermissionGuard from '@/components/auth/PermissionGuard'
 
 interface Document {
   id: string
@@ -247,7 +248,8 @@ export default function EditDocumentPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <PermissionGuard module="documents" permission="canWrite">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
@@ -466,5 +468,6 @@ export default function EditDocumentPage() {
         </div>
       </div>
     </div>
+    </PermissionGuard>
   )
 }

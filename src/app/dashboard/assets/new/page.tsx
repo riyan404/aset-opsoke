@@ -58,7 +58,10 @@ function NewAssetPageContent() {
 
   // Auto-generate barcode when category changes
   const generateBarcode = async (category: string) => {
-    if (!category || !token) return
+    if (!category || !token) {
+      toast.error('Kategori dan token diperlukan untuk generate barcode')
+      return
+    }
 
     try {
       const response = await fetch('/api/assets/generate-barcode', {
@@ -74,10 +77,21 @@ function NewAssetPageContent() {
         const data = await response.json()
         setFormData(prev => ({ ...prev, barcode: data.barcode }))
         toast.success('Barcode berhasil digenerate otomatis')
+      } else {
+        const errorData = await response.json().catch(() => ({ error: 'Unknown error' }))
+        console.error('Barcode generation failed:', errorData)
+        
+        if (response.status === 401) {
+          toast.error('Sesi Anda telah berakhir. Silakan login kembali.')
+        } else if (response.status === 400) {
+          toast.error('Kategori tidak valid untuk generate barcode')
+        } else {
+          toast.error(`Gagal generate barcode: ${errorData.error || 'Server error'}`)
+        }
       }
     } catch (error) {
       console.error('Failed to generate barcode:', error)
-      toast.error('Gagal generate barcode otomatis')
+      toast.error('Gagal generate barcode: Koneksi bermasalah')
     }
   }
 

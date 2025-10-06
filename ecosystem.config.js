@@ -2,12 +2,17 @@ module.exports = {
   apps: [
     {
       name: 'asset-management-prod',
-      script: 'node',
-      args: 'dist/standalone/server.js',
+      script: 'dist/standalone/server.js',
       cwd: '/home/riyan404/aset-opsoke',
+      interpreter: 'node',
       env: {
         NODE_ENV: 'production',
-        PORT: 3001
+        PORT: 3001,
+        DATABASE_URL: 'file:/home/riyan404/aset-opsoke/prisma/prod.db',
+        JWT_SECRET: 'your-super-secret-jwt-key-here-change-in-production',
+        NEXTAUTH_SECRET: 'your-nextauth-secret-key-here',
+        NEXTAUTH_URL: 'http://localhost:3001',
+        NEXT_PUBLIC_APP_URL: 'http://localhost:3001'
       },
       env_file: '.env.production',
       node_args: '--max-old-space-size=2048 --optimize-for-size',

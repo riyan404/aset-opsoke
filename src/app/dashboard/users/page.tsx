@@ -9,6 +9,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Users, Plus, Search, Filter, Eye, Edit, Trash2, Shield, User } from 'lucide-react'
 import { ActionsDropdown, userActions } from '@/components/ui/actions-dropdown'
+import PermissionGuard from '@/components/auth/PermissionGuard'
+import { PermissionGuard as PG, usePermission } from '@/components/PermissionGuard'
 
 interface UserData {
   id: string
@@ -37,6 +39,7 @@ export default function UsersPage() {
   const { token, user } = useAuth()
   const { showSuccess, showError } = useNotification()
   const router = useRouter()
+  const canWrite = usePermission('USERS', 'canWrite')
   const [users, setUsers] = useState<UserData[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
@@ -183,34 +186,36 @@ export default function UsersPage() {
     }
   }
 
-  // Check if user is admin
-  if (user?.role !== 'ADMIN') {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-center">
-          <Shield className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Akses Ditolak</h2>
-          <p className="text-gray-600">Anda tidak memiliki izin untuk mengakses manajemen pengguna.</p>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="space-y-6">
+    <PG module="USERS" permission="canRead">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Manajemen Pengguna</h1>
           <p className="text-gray-600">Kelola pengguna sistem dan izin mereka</p>
         </div>
-        <Button 
-          className="bg-[#187F7E] hover:bg-[#00AAA8]"
-          onClick={() => router.push('/dashboard/users/new')}
+        <PG 
+          module="USERS" 
+          permission="canWrite"
+          fallback={
+            <Button 
+              className="bg-gray-400 hover:bg-gray-500 text-white cursor-not-allowed"
+              disabled
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Akses Ditolak
+            </Button>
+          }
         >
-          <Plus className="w-4 h-4 mr-2" />
-          Tambah Pengguna
-        </Button>
+          <Button 
+            className="bg-[#187F7E] hover:bg-[#00AAA8]"
+            onClick={() => router.push('/dashboard/users/new')}
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Tambah Pengguna
+          </Button>
+        </PG>
       </div>
 
       {/* Filters */}
@@ -372,5 +377,6 @@ export default function UsersPage() {
         </CardContent>
       </Card>
     </div>
+    </PG>
   )
 }

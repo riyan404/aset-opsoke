@@ -197,9 +197,9 @@ export const GET = withAuth(async (request: NextRequest) => {
       AND: [
         search ? {
           OR: [
-            { title: { contains: search, mode: 'insensitive' as const } },
-            { description: { contains: search, mode: 'insensitive' as const } },
-            { fileName: { contains: search, mode: 'insensitive' as const } },
+            { title: { contains: search } },
+            { description: { contains: search } },
+            { fileName: { contains: search } },
           ],
         } : {},
         category ? { category: category as any } : {},

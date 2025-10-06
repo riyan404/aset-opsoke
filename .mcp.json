@@ -1,0 +1,179 @@
+{
+  "mcpVersion": "2024-11-05",
+  "name": "aset-opsoke-production-safety",
+  "version": "1.0.0",
+  "description": "Production safety rules and database protection for Asset Management System",
+  "server": {
+    "command": "node",
+    "args": ["mcp-server.js"],
+    "env": {
+      "NODE_ENV": "production",
+      "DATABASE_URL": "file:/home/riyan404/aset-opsoke/prisma/prod.db"
+    }
+  },
+  "capabilities": {
+    "resources": true,
+    "tools": true,
+    "prompts": true
+  },
+  "resources": [
+    {
+      "uri": "file:///home/riyan404/aset-opsoke/PRODPROMPT.md",
+      "name": "Production Safety Rules",
+      "description": "Critical production database protection rules and procedures",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "file:///home/riyan404/aset-opsoke/PRODUCTION_SAFETY_RULES.md",
+      "name": "Detailed Safety Procedures",
+      "description": "Comprehensive production safety procedures and guidelines",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "file:///home/riyan404/aset-opsoke/QUICK_DEPLOY_GUIDE.md",
+      "name": "Quick Deploy Guide",
+      "description": "Quick reference guide for safe dev to prod deployments",
+      "mimeType": "text/markdown"
+    },
+    {
+      "uri": "file:///home/riyan404/aset-opsoke/scripts/prod-protection.sh",
+      "name": "Production Protection Script",
+      "description": "Script that enforces production database protection",
+      "mimeType": "application/x-sh"
+    },
+    {
+      "uri": "file:///home/riyan404/aset-opsoke/scripts/auto-backup.sh",
+      "name": "Automated Backup System",
+      "description": "Automated database backup and recovery system",
+      "mimeType": "application/x-sh"
+    },
+    {
+      "uri": "file:///home/riyan404/aset-opsoke/.production",
+      "name": "Production Environment Marker",
+      "description": "File that marks this environment as production",
+      "mimeType": "text/plain"
+    }
+  ],
+  "tools": [
+    {
+      "name": "check_production_status",
+      "description": "Check if current environment is production and show protection status",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "create_production_backup",
+      "description": "Create a backup of the production database",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "backup_name": {
+            "type": "string",
+            "description": "Optional custom name for the backup"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "list_production_backups",
+      "description": "List all available production database backups",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    },
+    {
+      "name": "validate_production_operation",
+      "description": "Validate if a database operation is safe to run in production",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "operation": {
+            "type": "string",
+            "description": "The operation to validate (e.g., 'seed', 'migrate', 'push')",
+            "enum": ["seed", "migrate", "push", "reset", "deploy"]
+          },
+          "force": {
+            "type": "boolean",
+            "description": "Whether to force the operation (requires additional confirmation)",
+            "default": false
+          }
+        },
+        "required": ["operation"]
+      }
+    }
+  ],
+  "prompts": [
+    {
+      "name": "production_safety_check",
+      "description": "Comprehensive production safety checklist and guidelines",
+      "arguments": [
+        {
+          "name": "operation_type",
+          "description": "Type of operation being performed",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "emergency_recovery",
+      "description": "Emergency recovery procedures for production database issues",
+      "arguments": [
+        {
+          "name": "issue_type",
+          "description": "Type of issue encountered",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "production_deployment",
+      "description": "Safe production deployment procedures and checklist",
+      "arguments": [
+        {
+          "name": "deployment_type",
+          "description": "Type of deployment (code, database, full)",
+          "required": false
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "author": "Asset Management System Team",
+    "license": "MIT",
+    "homepage": "https://github.com/your-org/aset-opsoke",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/your-org/aset-opsoke.git"
+    },
+    "keywords": [
+      "production-safety",
+      "database-protection",
+      "backup-automation",
+      "asset-management"
+    ]
+  },
+  "security": {
+    "production_markers": [
+      ".production",
+      "NODE_ENV=production",
+      "prisma/prod.db"
+    ],
+    "protected_operations": [
+      "seed",
+      "db:push",
+      "migrate:reset",
+      "db:reset"
+    ],
+    "backup_required_operations": [
+      "seed",
+      "migrate",
+      "deploy"
+    ]
+  }
+}

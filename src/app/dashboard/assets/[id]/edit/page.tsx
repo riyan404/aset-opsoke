@@ -1,13 +1,26 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { Package, ArrowLeft, Save } from 'lucide-react'
+import { Package, ArrowLeft, Save, Upload, X, Camera, Loader2 } from 'lucide-react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import PermissionGuard from '@/components/auth/PermissionGuard'
+import { SuccessModal } from '@/components/ui/success-modal'
+import ErrorModal from '@/components/ui/error-modal'
+import WarningModal from '@/components/ui/warning-modal'
+
+
+interface Category {
+  id: string
+  name: string
+  description?: string
+  isActive: boolean
+}
 
 interface Asset {
   id: string
@@ -36,6 +49,19 @@ export default function AssetEditPage() {
   const [asset, setAsset] = useState<Asset | null>(null)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
+  const [categories, setCategories] = useState<Category[]>([])
+  const [categoriesLoading, setCategoriesLoading] = useState(true)
+  const [showSuccessModal, setShowSuccessModal] = useState(false)
+  const [showErrorModal, setShowErrorModal] = useState(false)
+  const [showWarningModal, setShowWarningModal] = useState(false)
+  const [modalMessage, setModalMessage] = useState('')
+  
+  // Photo upload states
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [uploading, setUploading] = useState(false)
+  const [uploadProgress, setUploadProgress] = useState(0)
+  const [previewImage, setPreviewImage] = useState<string | null>(null)
+  
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -53,11 +79,153 @@ export default function AssetEditPage() {
     notes: '',
     tags: '',
     isActive: true,
+    photo: null as { url: string; filename: string; size: number } | null,
   })
+
+  // Image compression function
+  const compressImage = async (file: File, targetSizeKB: number = 500): Promise<File> => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas')
+      const ctx = canvas.getContext('2d')!
+      const img = new Image()
+      
+      img.onload = () => {
+        // Calculate new dimensions while maintaining aspect ratio
+        let { width, height } = img
+        const maxDimension = 1920 // Maximum width or height
+        
+        if (width > height && width > maxDimension) {
+          height = (height * maxDimension) / width
+          width = maxDimension
+        } else if (height > maxDimension) {
+          width = (width * maxDimension) / height
+          height = maxDimension
+        }
+        
+        canvas.width = width
+        canvas.height = height
+        
+        // Draw and compress
+        let quality = 0.9
+        let compressedFile: File
+        
+        const compress = () => {
+          ctx.clearRect(0, 0, width, height)
+          ctx.drawImage(img, 0, 0, width, height)
+          
+          canvas.toBlob((blob) => {
+            if (blob) {
+              const sizeKB = blob.size / 1024
+              compressedFile = new File([blob], file.name, {
+                type: 'image/jpeg',
+                lastModified: Date.now(),
+              })
+              
+              // Update progress
+              const progress = Math.min(90, ((targetSizeKB - sizeKB) / targetSizeKB) * 100)
+              setUploadProgress(Math.max(10, progress))
+              
+              if (sizeKB <= targetSizeKB || quality <= 0.1) {
+                setUploadProgress(100)
+                resolve(compressedFile)
+              } else {
+                quality -= 0.1
+                setTimeout(compress, 100) // Small delay to show progress
+              }
+            }
+          }, 'image/jpeg', quality)
+        }
+        
+        compress()
+      }
+      
+      img.src = URL.createObjectURL(file)
+    })
+  }
+
+  // Handle file upload
+   const handleFileUpload = async (file: File) => {
+     // Validate file type
+     if (!file.type.startsWith('image/')) {
+       console.log('Please select an image file')
+       return
+     }
+
+     // Validate file size (max 10MB)
+     if (file.size > 10 * 1024 * 1024) {
+       console.log('File size must be less than 10MB')
+       return
+     }
+
+     try {
+       setUploading(true)
+       setUploadProgress(0)
+       
+       // Compress image
+       const compressedFile = await compressImage(file)
+       
+       // Create preview
+       const previewUrl = URL.createObjectURL(compressedFile)
+       setPreviewImage(previewUrl)
+       
+       // Update form data
+       setFormData(prev => ({
+         ...prev,
+         photo: {
+           url: previewUrl,
+           filename: compressedFile.name,
+           size: compressedFile.size
+         }
+       }))
+       
+       console.log(`Photo compressed successfully! Size reduced to ${(compressedFile.size / 1024).toFixed(1)}KB`)
+     } catch (error) {
+       console.error('Error processing image:', error)
+       console.log('Failed to process image')
+     } finally {
+       setUploading(false)
+       setUploadProgress(0)
+     }
+   }
+
+  // Handle file input change
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      handleFileUpload(file)
+    }
+  }
+
+  // Handle remove file
+   const handleRemoveFile = () => {
+     if (previewImage) {
+       URL.revokeObjectURL(previewImage)
+     }
+     setPreviewImage(null)
+     setFormData(prev => ({ ...prev, photo: null }))
+     if (fileInputRef.current) {
+       fileInputRef.current.value = ''
+     }
+     console.log('Photo removed')
+   }
+
+  // Handle drag and drop
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault()
+  }
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault()
+    const file = e.dataTransfer.files[0]
+    if (file) {
+      handleFileUpload(file)
+    }
+  }
 
   useEffect(() => {
     if (params.id) {
       fetchAsset()
+      fetchCategories()
     }
   }, [params.id])
 
@@ -93,6 +261,7 @@ export default function AssetEditPage() {
           notes: assetData.notes || '',
           tags: assetData.tags || '',
           isActive: assetData.isActive,
+          photo: null,
         })
       } else if (response.status === 404) {
         router.push('/dashboard/assets')
@@ -104,6 +273,24 @@ export default function AssetEditPage() {
     }
   }
 
+  const fetchCategories = async () => {
+    try {
+      setCategoriesLoading(true)
+      const response = await fetch('/api/categories?type=ASSET', {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        setCategories(data.categories || [])
+      }
+    } catch (error) {
+      console.error('Failed to fetch categories:', error)
+    } finally {
+      setCategoriesLoading(false)
+    }
+  }
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
     setFormData(prev => ({
@@ -112,11 +299,16 @@ export default function AssetEditPage() {
     }))
   }
 
+  const handleChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     if (!formData.name || !formData.category || !formData.location) {
-      alert('Please fill in all required fields (Name, Category, Location)')
+      setModalMessage('Please fill in all required fields (Name, Category, Location)')
+      setShowWarningModal(true)
       return
     }
 
@@ -132,15 +324,16 @@ export default function AssetEditPage() {
       })
 
       if (response.ok) {
-        alert('Asset updated successfully')
-        router.push(`/dashboard/assets/${params.id}`)
+        setShowSuccessModal(true)
       } else {
         const data = await response.json()
-        alert(data.error || 'Failed to update asset')
+        setModalMessage(data.error || 'Failed to update asset')
+        setShowErrorModal(true)
       }
     } catch (error) {
       console.error('Error updating asset:', error)
-      alert('Failed to update asset')
+      setModalMessage('Failed to update asset')
+      setShowErrorModal(true)
     } finally {
       setSaving(false)
     }
@@ -167,7 +360,8 @@ export default function AssetEditPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <PermissionGuard module="assets" permission="canWrite">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
@@ -186,7 +380,7 @@ export default function AssetEditPage() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
           {/* Basic Information */}
           <Card>
             <CardHeader>
@@ -229,21 +423,29 @@ export default function AssetEditPage() {
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Category *
                   </label>
-                  <select
-                    name="category"
-                    value={formData.category}
-                    onChange={handleInputChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#187F7E]"
-                    required
-                  >
-                    <option value="">Select Category</option>
-                    <option value="COMPUTER">Computer</option>
-                    <option value="FURNITURE">Furniture</option>
-                    <option value="VEHICLE">Vehicle</option>
-                    <option value="EQUIPMENT">Equipment</option>
-                    <option value="SOFTWARE">Software</option>
-                    <option value="OTHER">Other</option>
-                  </select>
+                  {categoriesLoading ? (
+                    <div className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md bg-gray-50 flex items-center">
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-[#187F7E] mr-2"></div>
+                      <span className="text-sm text-gray-500">Loading categories...</span>
+                    </div>
+                  ) : (
+                    <Select 
+                      value={formData.category} 
+                      onValueChange={(value: string) => handleChange('category', value)}
+                      required
+                    >
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select Category" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {categories.map((category) => (
+                          <SelectItem key={category.id} value={category.name}>
+                            {category.name}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
                 </div>
 
                 <div>
@@ -315,19 +517,22 @@ export default function AssetEditPage() {
                 <label className="block text-sm font-medium text-gray-700 mb-1">
                   Condition
                 </label>
-                <select
-                  name="condition"
-                  value={formData.condition}
-                  onChange={handleInputChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#187F7E]"
+                <Select 
+                  value={formData.condition} 
+                  onValueChange={(value: string) => handleChange('condition', value)}
                 >
-                  <option value="EXCELLENT">Excellent</option>
-                  <option value="GOOD">Good</option>
-                  <option value="FAIR">Fair</option>
-                  <option value="POOR">Poor</option>
-                  <option value="DAMAGED">Damaged</option>
-                  <option value="DISPOSED">Disposed</option>
-                </select>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select Condition" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="EXCELLENT">Excellent</SelectItem>
+                    <SelectItem value="GOOD">Good</SelectItem>
+                    <SelectItem value="FAIR">Fair</SelectItem>
+                    <SelectItem value="POOR">Poor</SelectItem>
+                    <SelectItem value="DAMAGED">Damaged</SelectItem>
+                    <SelectItem value="DISPOSED">Disposed</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
             </CardContent>
           </Card>
@@ -429,6 +634,102 @@ export default function AssetEditPage() {
               </div>
             </CardContent>
           </Card>
+
+          {/* Photo Upload */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center">
+                <Camera className="w-5 h-5 mr-2" />
+                Asset Photo
+              </CardTitle>
+              <CardDescription>
+                Upload a photo of the asset (max 10MB, auto-compressed)
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              {!previewImage ? (
+                <div
+                  className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-[#187F7E] transition-colors cursor-pointer"
+                  onDragOver={handleDragOver}
+                  onDrop={handleDrop}
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange}
+                    className="hidden"
+                  />
+                  
+                  {uploading ? (
+                    <div className="space-y-3">
+                      <Loader2 className="w-8 h-8 text-[#187F7E] animate-spin mx-auto" />
+                      <div className="space-y-2">
+                        <p className="text-sm text-gray-600">Compressing image...</p>
+                        <div className="w-full bg-gray-200 rounded-full h-2">
+                          <div 
+                            className="bg-[#187F7E] h-2 rounded-full transition-all duration-300"
+                            style={{ width: `${uploadProgress}%` }}
+                          ></div>
+                        </div>
+                        <p className="text-xs text-gray-500">{uploadProgress}%</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="space-y-3">
+                      <Upload className="w-8 h-8 text-gray-400 mx-auto" />
+                      <div>
+                        <p className="text-sm font-medium text-gray-900">
+                          Click to upload or drag and drop
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          PNG, JPG, JPEG up to 10MB
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <div className="relative">
+                    <img
+                      src={previewImage}
+                      alt="Asset preview"
+                      className="w-full h-48 object-cover rounded-lg border"
+                    />
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="sm"
+                      className="absolute top-2 right-2"
+                      onClick={handleRemoveFile}
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  
+                  {formData.photo && (
+                    <div className="text-xs text-gray-500 space-y-1">
+                      <p>📁 {formData.photo.filename}</p>
+                      <p>📊 {(formData.photo.size / 1024).toFixed(1)} KB</p>
+                    </div>
+                  )}
+                  
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="w-full"
+                  >
+                    <Upload className="w-4 h-4 mr-2" />
+                    Change Photo
+                  </Button>
+                </div>
+              )}
+            </CardContent>
+          </Card>
         </div>
 
         {/* Action Buttons */}
@@ -455,5 +756,33 @@ export default function AssetEditPage() {
         </div>
       </form>
     </div>
+
+    {/* Success Modal */}
+    <SuccessModal
+      isOpen={showSuccessModal}
+      onClose={() => {
+        setShowSuccessModal(false)
+        router.push(`/dashboard/assets/${params.id}`)
+      }}
+      title="Berhasil!"
+      message="Asset berhasil diperbarui"
+    />
+
+    {/* Error Modal */}
+    <ErrorModal
+      isOpen={showErrorModal}
+      onClose={() => setShowErrorModal(false)}
+      title="Error"
+      message={modalMessage}
+    />
+
+    {/* Warning Modal */}
+    <WarningModal
+      isOpen={showWarningModal}
+      onClose={() => setShowWarningModal(false)}
+      title="Peringatan"
+      message={modalMessage}
+    />
+    </PermissionGuard>
   )
 }

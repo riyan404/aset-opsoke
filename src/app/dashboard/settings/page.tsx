@@ -2,12 +2,13 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
+import { PermissionGuard } from '@/components/PermissionGuard'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { useToast } from '@/components/ui/use-toast'
-import { Settings, User, Bell, Shield, Database, Palette, Save, Mail, Send, AlertTriangle, Download, RefreshCw, Clock, Calendar, Trash2, Play } from 'lucide-react'
+import { Settings, User, Bell, Shield, Database, Palette, Save, Mail, Send, AlertTriangle, Download, RefreshCw, Clock, Calendar, Trash2, Play, Brain } from 'lucide-react'
 
 export default function SettingsPage() {
   const { user, token, refreshUser } = useAuth()
@@ -63,6 +64,14 @@ export default function SettingsPage() {
     lastRunAt: null as string | null,
     isLoading: false,
     isSaving: false
+  })
+
+  // AI settings state
+  const [aiSettings, setAiSettings] = useState({
+    selectedModel: 'gpt-4o-mini',
+    isTestingConnection: false,
+    connectionStatus: null as 'success' | 'error' | null,
+    connectionMessage: '',
   })
 
   // Load notification preferences on mount
@@ -531,6 +540,150 @@ export default function SettingsPage() {
     }
   }
 
+  // AI Settings Functions
+  const handleTestAIConnection = async () => {
+    if (!aiSettings.selectedModel?.trim()) {
+      toast({
+        title: 'Error',
+        description: 'Model selection is required to test connection',
+        variant: 'destructive',
+      })
+      return
+    }
+
+    // Debug logging to check the selectedModel value
+    console.log('Testing connection with:', {
+      selectedModel: aiSettings.selectedModel,
+      selectedModelLength: aiSettings.selectedModel?.length || 0
+    })
+
+    setAiSettings(prev => ({ ...prev, isTestingConnection: true, connectionStatus: null }))
+
+    try {
+      const response = await fetch('/api/ai/test-connection', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          selectedModel: aiSettings.selectedModel,
+        }),
+      })
+
+      const result = await response.json()
+      console.log('Test connection result:', result)
+
+      if (result.success) {
+        setAiSettings(prev => ({
+          ...prev,
+          connectionStatus: 'success',
+          connectionMessage: 'Connection successful! AI service is working properly.',
+        }))
+        toast({
+          title: 'Success',
+          description: 'AI connection test successful',
+        })
+      } else {
+        setAiSettings(prev => ({
+          ...prev,
+          connectionStatus: 'error',
+          connectionMessage: result.error || 'Connection test failed',
+        }))
+        toast({
+          title: 'Error',
+          description: result.error || 'Connection test failed',
+          variant: 'destructive',
+        })
+      }
+    } catch (error) {
+      setAiSettings(prev => ({
+        ...prev,
+        connectionStatus: 'error',
+        connectionMessage: 'Network error occurred during connection test',
+      }))
+      toast({
+        title: 'Error',
+        description: 'Network error occurred during connection test',
+        variant: 'destructive',
+      })
+    } finally {
+      setAiSettings(prev => ({ ...prev, isTestingConnection: false }))
+    }
+  }
+
+  const handleSaveAISettings = async () => {
+    if (!aiSettings.selectedModel?.trim()) {
+      toast({
+        title: 'Error',
+        description: 'Model selection is required',
+        variant: 'destructive',
+      })
+      return
+    }
+
+    setSaving(true)
+
+    try {
+      const response = await fetch('/api/ai/settings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          selectedModel: aiSettings.selectedModel,
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        toast({
+          title: 'Success',
+          description: 'AI settings saved successfully',
+        })
+      } else {
+        throw new Error(result.error || 'Failed to save AI settings')
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: error instanceof Error ? error.message : 'Failed to save AI settings',
+        variant: 'destructive',
+      })
+    } finally {
+      setSaving(false)
+    }
+  }
+
+  // Load AI settings when AI tab is active and user is admin
+  useEffect(() => {
+    const loadAISettings = async () => {
+      if (activeTab === 'ai' && user?.role === 'ADMIN' && token) {
+        try {
+          const response = await fetch('/api/ai/settings', {
+            headers: { Authorization: `Bearer ${token}` },
+          })
+
+          if (response.ok) {
+            const result = await response.json()
+            if (result.success && result.settings) {
+              setAiSettings(prev => ({
+                ...prev,
+                selectedModel: result.settings.selectedModel || 'gpt-4o-mini',
+              }))
+            }
+          }
+        } catch (error) {
+          console.error('Failed to load AI settings:', error)
+        }
+      }
+    }
+
+    loadAISettings()
+  }, [activeTab, user?.role, token])
+
   // Load backups when system tab is active and user is admin
   useEffect(() => {
     if (activeTab === 'system' && user?.role === 'ADMIN') {
@@ -543,12 +696,14 @@ export default function SettingsPage() {
     { id: 'profile', label: 'Profil', icon: User },
     { id: 'security', label: 'Keamanan', icon: Shield },
     { id: 'notifications', label: 'Notifikasi', icon: Bell },
+    ...(user?.role === 'ADMIN' ? [{ id: 'ai', label: 'Pengaturan AI', icon: Brain }] : []),
     { id: 'system', label: 'Sistem', icon: Database },
     { id: 'appearance', label: 'Tampilan', icon: Palette },
   ]
 
   return (
-    <div className="space-y-6">
+    <PermissionGuard module="settings" permission="canRead">
+      <div className="space-y-6">
       {/* Header */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900">Pengaturan</h1>
@@ -1294,8 +1449,135 @@ export default function SettingsPage() {
               </CardContent>
             </Card>
           )}
+
+          {/* AI Settings Tab - Only for Admin */}
+          {activeTab === 'ai' && user?.role === 'ADMIN' && (
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center">
+                  <Brain className="w-5 h-5 mr-2" />
+                  Pengaturan AI
+                </CardTitle>
+                <CardDescription>
+                  Pilih model AI yang akan digunakan untuk fitur-fitur kecerdasan buatan dalam aplikasi.
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Model Selection */}
+                <div className="space-y-4">
+                  <h4 className="font-medium text-gray-900">Pilihan Model AI</h4>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      Model Default
+                    </label>
+                    <select
+                      value={aiSettings.selectedModel}
+                      onChange={(e) => setAiSettings(prev => ({ ...prev, selectedModel: e.target.value }))}
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#187F7E] focus:border-transparent"
+                    >
+                      <optgroup label="Google Models">
+                        <option value="gemini/gemini-2.0-flash">Gemini 2.0 Flash</option>
+                        <option value="gemini/gemini-2.0-flash-lite">Gemini 2.0 Flash Lite</option>
+                        <option value="gemini/gemini-2.5-flash">Gemini 2.5 Flash</option>
+                        <option value="gemini/gemini-2.5-flash-lite">Gemini 2.5 Flash Lite</option>
+                        <option value="gemini/gemini-2.5-pro">Gemini 2.5 Pro</option>
+                      </optgroup>
+                      <optgroup label="OpenAI Models">
+                        <option value="gpt-4.1">GPT-4.1</option>
+                        <option value="gpt-4.1-mini">GPT-4.1 Mini</option>
+                        <option value="gpt-4.1-nano">GPT-4.1 Nano</option>
+                        <option value="gpt-4o">GPT-4o</option>
+                        <option value="gpt-4o-mini">GPT-4o Mini</option>
+                        <option value="gpt-4o-mini-transcribe">GPT-4o Mini Transcribe</option>
+                        <option value="gpt-4o-mini-tts">GPT-4o Mini TTS</option>
+                        <option value="gpt-4o-transcribe">GPT-4o Transcribe</option>
+                        <option value="gpt-5">GPT-5</option>
+                        <option value="gpt-5-chat">GPT-5 Chat</option>
+                        <option value="gpt-5-mini">GPT-5 Mini</option>
+                      </optgroup>
+                    </select>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Pilih model AI yang akan digunakan secara default untuk fitur-fitur AI dalam aplikasi.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Connection Test */}
+                <div className="space-y-4">
+                  <h4 className="font-medium text-gray-900">Test Koneksi</h4>
+                  
+                  <div className="flex items-center space-x-3">
+                    <Button
+                      onClick={handleTestAIConnection}
+                      disabled={aiSettings.isTestingConnection || !aiSettings.selectedModel?.trim()}
+                      variant="outline"
+                    >
+                      {aiSettings.isTestingConnection ? (
+                        <>
+                          <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                          Testing...
+                        </>
+                      ) : (
+                        <>
+                          <Play className="w-4 h-4 mr-2" />
+                          Test Koneksi
+                        </>
+                      )}
+                    </Button>
+                    
+                    {aiSettings.connectionStatus && (
+                      <div className={`flex items-center space-x-2 ${
+                        aiSettings.connectionStatus === 'success' ? 'text-green-600' : 'text-red-600'
+                      }`}>
+                        {aiSettings.connectionStatus === 'success' ? (
+                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        ) : (
+                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                        )}
+                        <span className="text-sm font-medium">
+                          {aiSettings.connectionStatus === 'success' ? 'Connected' : 'Connection Failed'}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {aiSettings.connectionMessage && (
+                    <div className={`p-3 rounded-md text-sm ${
+                      aiSettings.connectionStatus === 'success' 
+                        ? 'bg-green-50 text-green-800 border border-green-200' 
+                        : 'bg-red-50 text-red-800 border border-red-200'
+                    }`}>
+                      {aiSettings.connectionMessage}
+                    </div>
+                  )}
+                </div>
+
+                {/* Save Button */}
+                <div className="flex justify-end pt-4 border-t">
+                  <Button
+                    onClick={handleSaveAISettings}
+                    disabled={loading || !aiSettings.selectedModel?.trim()}
+                  >
+                    {loading ? (
+                      <>
+                        <RefreshCw className="w-4 h-4 mr-2 animate-spin" />
+                        Menyimpan...
+                      </>
+                    ) : (
+                      <>
+                        <Save className="w-4 h-4 mr-2" />
+                        Simpan Pengaturan AI
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
     </div>
+    </PermissionGuard>
   )
 }

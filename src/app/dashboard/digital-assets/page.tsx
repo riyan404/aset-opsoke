@@ -33,6 +33,7 @@ import {
 } from 'lucide-react'
 import { GoogleDriveButton } from '@/components/ui/google-drive-button'
 import { ActionsDropdown } from '@/components/ui/actions-dropdown'
+import { PermissionGuard, usePermission } from '@/components/PermissionGuard'
 
 // Helper functions
 const parseTags = (tags: string | null): string[] => {
@@ -276,21 +277,18 @@ const useLazyLoading = (page: number) => {
 export default function DigitalAssetsPage() {
   const { token } = useAuth()
   
+  // Permission hooks
+  const canWrite = usePermission('DIGITAL_ASSETS', 'canWrite')
+  
   // State management
   const [digitalAssets, setDigitalAssets] = useState<DigitalAsset[]>([])
   const [loading, setLoading] = useState(true)
-  const [permissionsLoaded, setPermissionsLoaded] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [aspectRatioFilter, setAspectRatioFilter] = useState('all')
   const [currentPage, setCurrentPage] = useState(1)
   const [pagination, setPagination] = useState<PaginationInfo | null>(null)
   const [selectedAsset, setSelectedAsset] = useState<DigitalAsset | null>(null)
   const [showDetailModal, setShowDetailModal] = useState(false)
-  const [userPermissions, setUserPermissions] = useState({
-    canRead: true,
-    canWrite: true,
-    canDelete: false
-  })
   const [accessDeniedModal, setAccessDeniedModal] = useState({
     isOpen: false,
     message: ''
@@ -341,34 +339,7 @@ export default function DigitalAssetsPage() {
     }
   }, [token])
 
-  // Fetch user permissions
-  const fetchUserPermissions = useCallback(async () => {
-    if (!token) return
-    
-    try {
-      const response = await fetch('/api/permissions/digital-assets', {
-        method: 'GET',
-        headers: { Authorization: `Bearer ${token}` },
-      })
-
-      if (response.ok) {
-        const permissions = await response.json()
-        setUserPermissions(permissions)
-      }
-    } catch (error) {
-      console.error('Error fetching permissions:', error)
-    } finally {
-      setPermissionsLoaded(true)
-    }
-  }, [token])
-
   // Effects
-  useEffect(() => {
-    if (token) {
-      fetchUserPermissions()
-    }
-  }, [token, fetchUserPermissions])
-
   useEffect(() => {
     if (token) {
       fetchDigitalAssets(currentPage, debouncedSearchTerm, aspectRatioFilter)
@@ -397,7 +368,7 @@ export default function DigitalAssetsPage() {
   }
 
   const handleEditAsset = (asset: DigitalAsset) => {
-    if (userPermissions.canWrite) {
+    if (canWrite) {
       window.location.href = `/dashboard/digital-assets/${asset.id}/edit`
     } else {
       showAccessDenied('Anda tidak memiliki izin untuk mengedit aset digital')
@@ -405,7 +376,7 @@ export default function DigitalAssetsPage() {
   }
 
   const handleDeleteAsset = async (asset: DigitalAsset) => {
-    if (!userPermissions.canDelete) {
+    if (!canWrite) {
       showAccessDenied('Anda tidak memiliki izin untuk menghapus aset digital')
       return
     }
@@ -453,7 +424,8 @@ export default function DigitalAssetsPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <PermissionGuard module="DIGITAL_ASSETS" permission="canRead">
+      <div className="container mx-auto px-4 py-8">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
         <div>
@@ -465,24 +437,28 @@ export default function DigitalAssetsPage() {
           </p>
         </div>
         
-        {userPermissions.canWrite ? (
+        <PermissionGuard 
+          module="DIGITAL_ASSETS" 
+          permission="canWrite"
+          showAccessDenied={false}
+          fallback={
+            <Button 
+              onClick={() => showAccessDenied('Anda tidak memiliki izin untuk menambah aset digital')}
+              className="bg-gray-400 hover:bg-gray-500 text-white cursor-not-allowed"
+            >
+              <Plus className="mr-2 h-4 w-4" />
+              Tambah Aset Digital
+            </Button>
+          }
+        >
           <Button 
             onClick={() => window.location.href = '/dashboard/digital-assets/new'}
             className="bg-teal-600 hover:bg-teal-700 text-white"
-            disabled={!permissionsLoaded}
-          >
-            <Plus className="mr-2 h-4 w-4" />
-            {permissionsLoaded ? 'Tambah Aset Digital' : 'Loading...'}
-          </Button>
-        ) : (
-          <Button 
-            onClick={() => showAccessDenied('Anda tidak memiliki izin untuk menambah aset digital')}
-            className="bg-gray-400 hover:bg-gray-500 text-white cursor-not-allowed"
           >
             <Plus className="mr-2 h-4 w-4" />
             Tambah Aset Digital
           </Button>
-        )}
+        </PermissionGuard>
       </div>
 
       {/* Search and Filter */}
@@ -529,7 +505,7 @@ export default function DigitalAssetsPage() {
             <p className="text-gray-600 text-center mb-4">
               Mulai menambahkan file design untuk membangun database kreatif perusahaan
             </p>
-            {userPermissions.canWrite && (
+            {canWrite && (
               <Button 
                 onClick={() => window.location.href = '/dashboard/digital-assets/new'}
                 className="bg-teal-600 hover:bg-teal-700 text-white"
@@ -550,8 +526,8 @@ export default function DigitalAssetsPage() {
                 onView={handleViewAsset}
                 onEdit={handleEditAsset}
                 onDelete={handleDeleteAsset}
-                canWrite={userPermissions.canWrite}
-                canDelete={userPermissions.canDelete}
+                canWrite={canWrite}
+                canDelete={canWrite} // Using canWrite for delete permission as well
                 shouldLoadImage={shouldLoadImages(currentPage)}
               />
             ))}
@@ -733,7 +709,7 @@ export default function DigitalAssetsPage() {
                         <ExternalLink className="w-4 h-4 mr-2" />
                         Buka di Google Drive
                       </Button>
-                      {userPermissions.canWrite && (
+                      {canWrite && (
                         <Button
                           onClick={() => {
                             setShowDetailModal(false);
@@ -747,7 +723,7 @@ export default function DigitalAssetsPage() {
                           Edit
                         </Button>
                       )}
-                      {userPermissions.canDelete && (
+                      {canWrite && (
                         <Button
                           onClick={() => {
                             setShowDetailModal(false);
@@ -791,6 +767,7 @@ export default function DigitalAssetsPage() {
           </div>
         </DialogContent>
       </Dialog>
-    </div>
+      </div>
+    </PermissionGuard>
   )
 }

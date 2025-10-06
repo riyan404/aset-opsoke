@@ -1,15 +1,19 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
-import { useAuth } from '@/contexts/AuthContext'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Package, Plus, Search, Filter, Eye, Edit, Trash2 } from 'lucide-react'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { Package, Plus, Search, Eye, Edit, Trash2, AlertCircle } from 'lucide-react'
 import { ActionsDropdown, assetActions } from '@/components/ui/actions-dropdown'
 import { AssetDetailModal } from '@/components/ui/asset-detail-modal'
 import { DeleteConfirmationModal } from '@/components/ui/delete-confirmation-modal'
+import DuplicateAssetModal from '@/components/ui/duplicate-asset-modal'
+import { NotificationModal, NotificationType } from '@/components/ui/notification-modal'
+import { useAuth } from '@/contexts/AuthContext'
+import PermissionGuard from '@/components/auth/PermissionGuard'
 
 interface Asset {
   id: string
@@ -28,6 +32,7 @@ interface Asset {
   warrantyUntil?: string
   notes?: string
   tags?: string
+  photoPath?: string
   isActive: boolean
   createdAt: string
   updatedAt: string
@@ -56,26 +61,77 @@ interface ApiResponse {
 export default function AssetsPage() {
   const { token } = useAuth()
   const router = useRouter()
+  
+  // State management
   const [assets, setAssets] = useState<Asset[]>([])
   const [loading, setLoading] = useState(true)
+  const [permissionsLoaded, setPermissionsLoaded] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
   const [totalAssets, setTotalAssets] = useState(0)
   const [selectedAsset, setSelectedAsset] = useState<Asset | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [categoryFilter, setCategoryFilter] = useState('')
-  const [statusFilter, setStatusFilter] = useState('')
-  const [locationFilter, setLocationFilter] = useState('')
+  const [userPermissions, setUserPermissions] = useState({
+    canRead: false,
+    canWrite: false,
+    canDelete: false
+  })
+  const [accessDeniedModal, setAccessDeniedModal] = useState({
+    isOpen: false,
+    message: ''
+  })
   const [deleteModal, setDeleteModal] = useState<{
     isOpen: boolean
     asset: Asset | null
     loading: boolean
   }>({ isOpen: false, asset: null, loading: false })
+  const [duplicateModal, setDuplicateModal] = useState<{
+    isOpen: boolean
+    asset: Asset | null
+  }>({ isOpen: false, asset: null })
+  const [notificationModal, setNotificationModal] = useState<{
+    isOpen: boolean
+    type: NotificationType
+    title?: string
+    message: string
+  }>({ isOpen: false, type: 'success', message: '' })
+
+  // Fetch user permissions
+  const fetchUserPermissions = useCallback(async () => {
+    if (!token) return
+    
+    try {
+      const response = await fetch('/api/permissions/assets', {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token}` },
+      })
+
+      if (response.ok) {
+        const permissions = await response.json()
+        setUserPermissions(permissions)
+      }
+    } catch (error) {
+      console.error('Error fetching permissions:', error)
+    } finally {
+      setPermissionsLoaded(true)
+    }
+  }, [token])
+
+  // Effects
+  useEffect(() => {
+    if (token) {
+      fetchUserPermissions()
+    }
+  }, [token, fetchUserPermissions])
 
   useEffect(() => {
-    fetchAssets()
-  }, [currentPage, searchTerm, categoryFilter, statusFilter, locationFilter])
+    const timeoutId = setTimeout(() => {
+      fetchAssets()
+    }, 500)
+
+    return () => clearTimeout(timeoutId)
+  }, [currentPage, searchTerm])
 
   const fetchAssets = async () => {
     try {
@@ -83,16 +139,16 @@ export default function AssetsPage() {
       const params = new URLSearchParams({
         page: currentPage.toString(),
         limit: '10',
+        _t: Date.now().toString() // Timestamp untuk bypass cache
       })
       
       if (searchTerm) params.append('search', searchTerm)
-      if (categoryFilter) params.append('category', categoryFilter)
-      if (statusFilter) params.append('condition', statusFilter)
-      if (locationFilter) params.append('location', locationFilter)
 
       const response = await fetch(`/api/assets?${params.toString()}`, {
         headers: {
           Authorization: `Bearer ${token}`,
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
         },
       })
 
@@ -133,14 +189,6 @@ export default function AssetsPage() {
     return translations[condition as keyof typeof translations] || condition
   }
 
-  const formatCurrency = (amount?: number) => {
-    if (!amount) return '-'
-    return new Intl.NumberFormat('id-ID', {
-      style: 'currency',
-      currency: 'IDR',
-    }).format(amount)
-  }
-
   const handleViewAsset = async (id: string) => {
     try {
       const response = await fetch(`/api/assets/${id}`, {
@@ -154,11 +202,19 @@ export default function AssetsPage() {
         setSelectedAsset(data.asset)
         setIsModalOpen(true)
       } else {
-        alert('Asset not found')
+        setNotificationModal({
+          isOpen: true,
+          type: 'error',
+          message: 'Asset not found'
+        })
       }
     } catch (error) {
       console.error('Error fetching asset details:', error)
-      alert('Failed to load asset details')
+      setNotificationModal({
+        isOpen: true,
+        type: 'error',
+        message: 'Failed to load asset details'
+      })
     }
   }
 
@@ -168,38 +224,68 @@ export default function AssetsPage() {
   }
 
   const handleEditAsset = (id: string) => {
-    router.push(`/dashboard/assets/${id}/edit`)
+    if (userPermissions.canWrite) {
+      router.push(`/dashboard/assets/${id}/edit`)
+    } else {
+      showAccessDenied('Anda tidak memiliki izin untuk mengedit aset')
+    }
   }
 
   const handleDuplicateAsset = async (id: string) => {
-    if (!confirm('Apakah Anda yakin ingin menduplikasi aset ini?')) {
+    if (!userPermissions.canWrite) {
+      showAccessDenied('Anda tidak memiliki izin untuk menduplikasi aset')
       return
     }
+
+    const asset = assets.find(a => a.id === id)
+    if (asset) {
+      setDuplicateModal({ isOpen: true, asset })
+    }
+  }
+
+  const confirmDuplicateAsset = async (newName: string) => {
+    if (!duplicateModal.asset) return
     
     try {
-      const response = await fetch(`/api/assets/${id}/duplicate`, {
+      const response = await fetch(`/api/assets/${duplicateModal.asset.id}/duplicate`, {
         method: 'POST',
         headers: {
+          'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ name: newName })
       })
       
       if (response.ok) {
         const data = await response.json()
-        // Refresh the assets list
-        fetchAssets()
-        alert(`Aset berhasil diduplikasi: ${data.asset.name}`)
+        // Force refresh dengan timestamp untuk bypass cache
+        await fetchAssets()
+        // Reset ke halaman pertama jika diperlukan untuk melihat item baru
+        if (currentPage > 1) {
+          setCurrentPage(1)
+        }
+        setDuplicateModal({ isOpen: false, asset: null })
+        setNotificationModal({
+          isOpen: true,
+          type: 'success',
+          message: `Aset berhasil diduplikasi: ${data.asset.name}`
+        })
       } else {
         const data = await response.json()
-        alert(data.error || 'Gagal menduplikasi aset')
+        throw new Error(data.error || 'Gagal menduplikasi aset')
       }
     } catch (error) {
       console.error('Error duplicating asset:', error)
-      alert('Gagal menduplikasi aset')
+      throw error
     }
   }
 
   const handleDeleteAsset = (id: string) => {
+    if (!userPermissions.canDelete) {
+      showAccessDenied('Anda tidak memiliki izin untuk menghapus aset')
+      return
+    }
+
     const asset = assets.find(a => a.id === id)
     if (asset) {
       setDeleteModal({ isOpen: true, asset, loading: false })
@@ -220,20 +306,38 @@ export default function AssetsPage() {
       })
       
       if (response.ok) {
-        // Refresh the assets list
         fetchAssets()
         setDeleteModal({ isOpen: false, asset: null, loading: false })
-        alert('Aset berhasil dihapus')
+        setNotificationModal({
+          isOpen: true,
+          type: 'success',
+          message: 'Aset berhasil dihapus'
+        })
       } else {
         const data = await response.json()
-        alert(data.error || 'Gagal menghapus aset')
+        setNotificationModal({
+          isOpen: true,
+          type: 'error',
+          message: data.error || 'Gagal menghapus aset'
+        })
       }
     } catch (error) {
       console.error('Error deleting asset:', error)
-      alert('Gagal menghapus aset')
+      setNotificationModal({
+        isOpen: true,
+        type: 'error',
+        message: 'Gagal menghapus aset'
+      })
     } finally {
       setDeleteModal(prev => ({ ...prev, loading: false }))
     }
+  }
+
+  const showAccessDenied = (message: string) => {
+    setAccessDeniedModal({
+      isOpen: true,
+      message
+    })
   }
 
   const formatDate = (dateString?: string) => {
@@ -242,87 +346,48 @@ export default function AssetsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <PermissionGuard module="assets" permission="canRead">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Products</h1>
           <p className="text-gray-600">Kelola dan lacak aset perusahaan Anda</p>
         </div>
-        <Button 
-          className="bg-[#187F7E] hover:bg-[#00AAA8]"
-          onClick={() => router.push('/dashboard/assets/new')}
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Add Product
-        </Button>
+        {userPermissions.canWrite ? (
+          <Button 
+            className="bg-teal-600 hover:bg-teal-700 text-white"
+            onClick={() => router.push('/dashboard/assets/new')}
+            disabled={!permissionsLoaded}
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            {permissionsLoaded ? 'Tambah Produk' : 'Loading...'}
+          </Button>
+        ) : (
+          <Button 
+            onClick={() => showAccessDenied('Anda tidak memiliki izin untuk menambah aset')}
+            className="bg-gray-400 hover:bg-gray-500 text-white cursor-not-allowed"
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Tambah Produk
+          </Button>
+        )}
       </div>
 
       {/* Filters */}
       <div className="bg-white rounded-lg border border-gray-200 p-4">
-        <div className="flex flex-wrap gap-4 items-center">
+        <div className="flex items-center">
           <div className="flex-1 min-w-[200px]">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <Input
-                placeholder="Search products..."
+                placeholder="Cari produk..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10 border-gray-200"
               />
             </div>
           </div>
-          
-          <div className="flex gap-2">
-            <select 
-              className="px-3 py-2 border border-gray-200 rounded-md text-sm"
-              value={categoryFilter}
-              onChange={(e) => setCategoryFilter(e.target.value)}
-            >
-              <option value="">All Categories</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Furniture">Furniture</option>
-              <option value="Office">Office</option>
-              <option value="IT">IT</option>
-            </select>
-            <select 
-              className="px-3 py-2 border border-gray-200 rounded-md text-sm"
-              value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-            >
-              <option value="">All Status</option>
-              <option value="EXCELLENT">Sangat Baik</option>
-              <option value="GOOD">Baik</option>
-              <option value="FAIR">Cukup</option>
-              <option value="POOR">Buruk</option>
-              <option value="DAMAGED">Rusak</option>
-              <option value="DISPOSED">Dibuang</option>
-            </select>
-            <select 
-              className="px-3 py-2 border border-gray-200 rounded-md text-sm"
-              value={locationFilter}
-              onChange={(e) => setLocationFilter(e.target.value)}
-            >
-              <option value="">All Locations</option>
-              <option value="Office">Office</option>
-              <option value="Warehouse">Warehouse</option>
-              <option value="Store">Store</option>
-            </select>
-          </div>
-          
-          <Button 
-            variant="outline" 
-            className="border-gray-200"
-            onClick={() => {
-              setCategoryFilter('');
-              setStatusFilter('');
-              setLocationFilter('');
-              setSearchTerm('');
-            }}
-          >
-            <Filter className="w-4 h-4 mr-2" />
-            Reset Filter
-          </Button>
         </div>
       </div>
 
@@ -330,8 +395,8 @@ export default function AssetsPage() {
       <div className="bg-white rounded-lg border border-gray-200">
         <div className="px-6 py-4 border-b border-gray-200">
           <div className="flex items-center justify-between">
-            <h2 className="text-lg font-semibold text-gray-900">Products</h2>
-            <p className="text-sm text-gray-500">{totalAssets} items</p>
+            <h2 className="text-lg font-semibold text-gray-900">Produk</h2>
+            <p className="text-sm text-gray-500">{totalAssets} item</p>
           </div>
         </div>
         
@@ -342,36 +407,97 @@ export default function AssetsPage() {
         ) : assets.length === 0 ? (
           <div className="text-center py-12">
             <Package className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-500">Tidak ada aset ditemukan</p>
+            {searchTerm ? (
+              <div>
+                <p className="text-gray-500 mb-2">Tidak ada hasil pencarian untuk "{searchTerm}"</p>
+                <p className="text-sm text-gray-400">Coba gunakan kata kunci yang berbeda atau periksa ejaan</p>
+              </div>
+            ) : (
+              <div>
+                <p className="text-gray-500 mb-2">Belum ada produk yang ditambahkan</p>
+                <p className="text-sm text-gray-400">Klik tombol "Tambah Produk" untuk menambahkan produk pertama</p>
+              </div>
+            )}
           </div>
         ) : (
-          <div>
-            {/* Table Header */}
-            <div className="hidden md:grid md:grid-cols-10 gap-4 px-6 py-3 bg-gray-50 border-b border-gray-200 text-sm font-medium text-gray-700">
-              <div className="col-span-4">Product Name</div>
-              <div className="col-span-2">Category</div>
-              <div className="col-span-2">Location</div>
-              <div className="col-span-2">Action</div>
+          <div className="overflow-x-auto">
+            {/* Table Header - Desktop */}
+            <div className="hidden lg:grid lg:grid-cols-10 gap-4 px-6 py-3 bg-gray-50 border-b border-gray-200 text-sm font-medium text-gray-700">
+              <div className="col-span-5">Nama Produk</div>
+              <div className="col-span-2">Kategori</div>
+              <div className="col-span-2">Kondisi</div>
+              <div className="col-span-1">Aksi</div>
             </div>
 
             {/* Table Body */}
             <div className="divide-y divide-gray-200">
               {assets.map((asset) => (
-                <div key={asset.id} className="p-6 hover:bg-gray-50 transition-colors">
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                <div key={asset.id} className="p-4 lg:p-6 hover:bg-gray-50 transition-colors">
+                  {/* Mobile Layout */}
+                  <div className="lg:hidden space-y-3">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Package className="w-6 h-6 text-gray-400" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-medium text-gray-900 truncate">{asset.name}</h3>
+                        <p className="text-sm text-gray-500 truncate">
+                          {asset.brand} {asset.model}
+                        </p>
+                        {asset.serialNumber && (
+                          <p className="text-xs text-gray-400 truncate">SN: {asset.serialNumber}</p>
+                        )}
+                      </div>
+                      <div className="flex-shrink-0">
+                        <ActionsDropdown 
+                          items={assetActions(
+                            asset,
+                            handleViewAsset,
+                            handleEditAsset,
+                            handleDuplicateAsset,
+                            handleDeleteAsset
+                          )}
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-3 text-sm">
+                      <div>
+                        <span className="text-gray-500">Kategori:</span>
+                        <p className="font-medium text-gray-900">{asset.category}</p>
+                      </div>
+                      <div>
+                        <span className="text-gray-500">Kondisi:</span>
+                        <div className="mt-1">
+                          <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                            asset.condition === 'EXCELLENT' || asset.condition === 'GOOD' 
+                              ? 'bg-green-100 text-green-800' 
+                              : asset.condition === 'FAIR'
+                              ? 'bg-yellow-100 text-yellow-800'
+                              : 'bg-red-100 text-red-800'
+                          }`}>
+                            ● {getConditionText(asset.condition)}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Desktop Layout */}
+                  <div className="hidden lg:grid lg:grid-cols-10 gap-4 items-center">
                     {/* Product Info */}
-                    <div className="col-span-4">
+                    <div className="col-span-5">
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+                        <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center flex-shrink-0">
                           <Package className="w-6 h-6 text-gray-400" />
                         </div>
-                        <div>
-                          <h3 className="font-medium text-gray-900">{asset.name}</h3>
-                          <p className="text-sm text-gray-500">
+                        <div className="min-w-0 flex-1">
+                          <h3 className="font-medium text-gray-900 truncate">{asset.name}</h3>
+                          <p className="text-sm text-gray-500 truncate">
                             {asset.brand} {asset.model}
                           </p>
                           {asset.serialNumber && (
-                            <p className="text-xs text-gray-400">SN: {asset.serialNumber}</p>
+                            <p className="text-xs text-gray-400 truncate">SN: {asset.serialNumber}</p>
                           )}
                         </div>
                       </div>
@@ -379,27 +505,24 @@ export default function AssetsPage() {
                     
                     {/* Category */}
                     <div className="col-span-2">
-                      <p className="font-medium text-gray-900">{asset.category}</p>
+                      <p className="font-medium text-gray-900 truncate">{asset.category}</p>
                     </div>
                     
-                    {/* Location */}
-                    <div className="col-span-2">
-                      <p className="font-medium text-gray-900">{asset.location}</p>
-                    </div>
-                    
-                    {/* Status */}
+                    {/* Condition */}
                     <div className="col-span-2">
                       <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
                         asset.condition === 'EXCELLENT' || asset.condition === 'GOOD' 
                           ? 'bg-green-100 text-green-800' 
-                          : 'bg-yellow-100 text-yellow-800'
+                          : asset.condition === 'FAIR'
+                          ? 'bg-yellow-100 text-yellow-800'
+                          : 'bg-red-100 text-red-800'
                       }`}>
                         ● {getConditionText(asset.condition)}
                       </span>
                     </div>
                     
                     {/* Actions */}
-                    <div className="col-span-2">
+                    <div className="col-span-1">
                       <ActionsDropdown 
                         items={assetActions(
                           asset,
@@ -474,6 +597,49 @@ export default function AssetsPage() {
         itemName={deleteModal.asset?.name}
         loading={deleteModal.loading}
       />
+
+      {/* Duplicate Asset Modal */}
+      <DuplicateAssetModal
+        isOpen={duplicateModal.isOpen}
+        onClose={() => setDuplicateModal({ isOpen: false, asset: null })}
+        onConfirm={confirmDuplicateAsset}
+        asset={duplicateModal.asset}
+      />
+
+      {/* Access Denied Modal */}
+      <Dialog open={accessDeniedModal.isOpen} onOpenChange={(open) => setAccessDeniedModal({ ...accessDeniedModal, isOpen: open })}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-red-600">
+              <AlertCircle className="h-5 w-5" />
+              Akses Ditolak
+            </DialogTitle>
+          </DialogHeader>
+          <div className="py-4">
+            <p className="text-gray-700">{accessDeniedModal.message}</p>
+          </div>
+          <div className="flex justify-end">
+            <Button 
+              onClick={() => setAccessDeniedModal({ isOpen: false, message: '' })}
+              className="bg-gray-500 hover:bg-gray-600 text-white"
+            >
+              Tutup
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Notification Modal */}
+      <NotificationModal
+        isOpen={notificationModal.isOpen}
+        onClose={() => setNotificationModal({ ...notificationModal, isOpen: false })}
+        type={notificationModal.type}
+        title={notificationModal.title}
+        message={notificationModal.message}
+        autoClose={notificationModal.type === 'success'}
+        autoCloseDelay={3000}
+      />
     </div>
+    </PermissionGuard>
   )
 }

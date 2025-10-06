@@ -1,6 +1,6 @@
 'use client'
 
-import { MoreVertical, Eye, Edit, Trash2, Download, Copy, Share2, Archive, HardDrive, FolderOpen, FileImage, Database } from 'lucide-react'
+import { MoreVertical, Eye, Edit, Trash2, Download, Copy, Share2, Archive } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -97,38 +97,6 @@ export const assetActions = (
     label: 'Duplikasi',
     icon: Copy,
     onClick: () => onDuplicate(asset.id),
-  },
-  {
-    label: 'Buka di Drive',
-    icon: HardDrive,
-    onClick: () => {
-      // Implementasi buka di drive
-      console.log('Buka di drive:', asset.id);
-    },
-  },
-  {
-    label: 'Lihat Folder',
-    icon: FolderOpen,
-    onClick: () => {
-      // Implementasi lihat folder
-      console.log('Lihat folder:', asset.id);
-    },
-  },
-  {
-    label: 'Kelola File',
-    icon: FileImage,
-    onClick: () => {
-      // Implementasi kelola file
-      console.log('Kelola file:', asset.id);
-    },
-  },
-  {
-    label: 'Backup Data',
-    icon: Database,
-    onClick: () => {
-      // Implementasi backup data
-      console.log('Backup data:', asset.id);
-    },
   },
   {
     label: 'Hapus',

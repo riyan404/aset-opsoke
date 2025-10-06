@@ -1,16 +1,19 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 import { useNotification } from '@/contexts/NotificationContext'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { FileText, Plus, Search, Filter, Eye, Download, Edit, Trash2 } from 'lucide-react'
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
+import { FileText, Plus, Search, Filter, Eye, Download, Edit, Trash2, AlertCircle } from 'lucide-react'
 import { ActionsDropdown, documentActions } from '@/components/ui/actions-dropdown'
 import DocumentDetailModal from '@/components/ui/document-detail-modal'
 import { DeleteConfirmationModal } from '@/components/ui/delete-confirmation-modal'
+import PermissionGuard from '@/components/auth/PermissionGuard'
+import { PermissionGuard as PG, usePermission } from '@/components/PermissionGuard'
 
 interface Document {
   id: string
@@ -44,6 +47,7 @@ export default function DocumentsPage() {
   const { token } = useAuth()
   const { showSuccess, showError } = useNotification()
   const router = useRouter()
+  const canWrite = usePermission('DOCUMENTS', 'canWrite')
   const [documents, setDocuments] = useState<Document[]>([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
@@ -51,11 +55,17 @@ export default function DocumentsPage() {
   const [totalPages, setTotalPages] = useState(1)
   const [totalDocuments, setTotalDocuments] = useState(0)
   
+  const [accessDeniedModal, setAccessDeniedModal] = useState({
+    isOpen: false,
+    message: ''
+  })
+  
   // Modal states
   const [selectedDocumentId, setSelectedDocumentId] = useState<string | null>(null)
   const [showDetailModal, setShowDetailModal] = useState(false)
   const [deleteModal, setDeleteModal] = useState({ isOpen: false, document: null as Document | null, loading: false })
 
+  // Effects
   useEffect(() => {
     fetchDocuments()
   }, [currentPage, searchTerm])
@@ -133,6 +143,13 @@ export default function DocumentsPage() {
     return new Date(dateString).toLocaleDateString('id-ID')
   }
 
+  const showAccessDenied = (message: string) => {
+    setAccessDeniedModal({
+      isOpen: true,
+      message
+    })
+  }
+
   const handleDownload = async (documentId: string, fileName: string) => {
     try {
       const response = await fetch(`/api/documents/${documentId}/download`, {
@@ -163,10 +180,19 @@ export default function DocumentsPage() {
   }
 
   const handleEditDocument = (id: string) => {
-    router.push(`/dashboard/documents/${id}/edit`)
+    if (canWrite) {
+      router.push(`/dashboard/documents/${id}/edit`)
+    } else {
+      showAccessDenied('Anda tidak memiliki izin untuk mengedit dokumen')
+    }
   }
 
   const handleShareDocument = async (id: string, fileName: string) => {
+    if (!canWrite) {
+      showAccessDenied('Anda tidak memiliki izin untuk membagikan dokumen')
+      return
+    }
+
     try {
       const response = await fetch(`/api/documents/${id}/share`, {
         method: 'POST',
@@ -193,6 +219,11 @@ export default function DocumentsPage() {
   }
 
   const handleArchiveDocument = async (id: string) => {
+    if (!canWrite) {
+      showAccessDenied('Anda tidak memiliki izin untuk mengarsipkan dokumen')
+      return
+    }
+
     const reason = prompt('Alasan mengarsipkan dokumen:')
     if (reason === null) return // User cancelled
     
@@ -220,6 +251,11 @@ export default function DocumentsPage() {
   }
 
   const handleDeleteDocument = (document: Document) => {
+    if (!canWrite) {
+      showAccessDenied('Anda tidak memiliki izin untuk menghapus dokumen')
+      return
+    }
+
     setDeleteModal({ isOpen: true, document, loading: false })
   }
 
@@ -253,20 +289,35 @@ export default function DocumentsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <PG module="DOCUMENTS" permission="canRead">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold text-gray-900">Arsip Dokumen</h1>
           <p className="text-gray-600">Kelola dokumen perusahaan Anda mengikuti standar ISO</p>
         </div>
-        <Button 
-          className="bg-green-600 hover:bg-green-700"
-          onClick={() => router.push('/dashboard/documents/upload')}
+        <PG 
+          module="DOCUMENTS" 
+          permission="canWrite"
+          fallback={
+            <Button 
+              onClick={() => showAccessDenied('Anda tidak memiliki izin untuk mengunggah dokumen')}
+              className="bg-gray-400 hover:bg-gray-500 text-white cursor-not-allowed"
+            >
+              <Plus className="w-4 h-4 mr-2" />
+              Akses Ditolak
+            </Button>
+          }
         >
-          <Plus className="w-4 h-4 mr-2" />
-          Unggah Dokumen
-        </Button>
+          <Button 
+            className="bg-teal-600 hover:bg-teal-700 text-white"
+            onClick={() => router.push('/dashboard/documents/upload')}
+          >
+            <Plus className="w-4 h-4 mr-2" />
+            Unggah Dokumen
+          </Button>
+        </PG>
       </div>
 
       {/* Filters */}
@@ -301,137 +352,112 @@ export default function DocumentsPage() {
       {/* Documents List */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center">
-            <FileText className="w-5 h-5 mr-2" />
-            Dokumen ({totalDocuments})
+          <CardTitle className="flex items-center justify-between">
+            <span className="flex items-center">
+              <FileText className="w-5 h-5 mr-2" />
+              Dokumen ({totalDocuments})
+            </span>
           </CardTitle>
-          <CardDescription>
-            Menampilkan {documents.length} dari {totalDocuments} dokumen
-          </CardDescription>
         </CardHeader>
         <CardContent>
           {loading ? (
-            <div className="flex items-center justify-center py-8">
-              <div className="w-8 h-8 border-4 border-green-600 border-t-transparent rounded-full animate-spin"></div>
+            <div className="flex items-center justify-center py-12">
+              <div className="w-8 h-8 border-4 border-[#187F7E] border-t-transparent rounded-full animate-spin"></div>
             </div>
           ) : documents.length === 0 ? (
-            <div className="text-center py-8">
+            <div className="text-center py-12">
               <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
               <p className="text-gray-500">Tidak ada dokumen ditemukan</p>
             </div>
           ) : (
             <div className="space-y-4">
-              {/* Table Header */}
-              <div className="grid grid-cols-12 gap-4 px-4 py-3 bg-gray-50 rounded-lg font-medium text-sm text-gray-700">
-                <div className="col-span-4">Dokumen</div>
-                <div className="col-span-2">Kategori</div>
-                <div className="col-span-2">Ukuran</div>
-                <div className="col-span-2">Dibuat</div>
-                <div className="col-span-2">Aksi</div>
-              </div>
-
-              {/* Table Body */}
               {documents.map((document) => (
-                <div key={document.id} className="grid grid-cols-12 gap-4 px-4 py-4 border border-gray-200 rounded-lg hover:bg-gray-50">
-                  <div className="col-span-4">
-                    <div className="flex items-start space-x-3">
-                      <div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                        <FileText className="w-5 h-5 text-red-600" />
-                      </div>
-                      <div>
-                        <h3 className="font-medium text-gray-900">{document.title}</h3>
-                        <p className="text-sm text-gray-500">{document.fileName}</p>
-                        {document.description && (
-                          <p className="text-xs text-gray-400 mt-1">{document.description}</p>
-                        )}
-                        <div className="flex items-center space-x-2 mt-1">
-                          <span className="text-xs text-gray-500">v{document.version}</span>
-                          {document.expiryDate && (
-                            <span className="text-xs text-orange-600">
-                              Kedaluwarsa: {formatDate(document.expiryDate)}
-                            </span>
-                          )}
-                        </div>
+                <div key={document.id} className="flex items-center justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-gray-900">{document.title}</h3>
+                      <p className="text-sm text-gray-500">{document.fileName} • {formatFileSize(document.fileSize)}</p>
+                      <div className="flex items-center space-x-2 mt-1">
+                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${getCategoryBadge(document.category)}`}>
+                          {getCategoryText(document.category)}
+                        </span>
+                        <span className="text-xs text-gray-400">
+                          Dibuat oleh {document.createdBy.firstName} {document.createdBy.lastName} • {formatDate(document.createdAt)}
+                        </span>
                       </div>
                     </div>
                   </div>
-                  <div className="col-span-2">
-                    <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${getCategoryBadge(document.category)}`}>
-                      {getCategoryText(document.category)}
-                    </span>
-                    {document.subcategory && (
-                      <p className="text-sm text-gray-500 mt-1">{document.subcategory}</p>
-                    )}
-                  </div>
-                  <div className="col-span-2">
-                    <p className="font-medium text-gray-900">{formatFileSize(document.fileSize)}</p>
-                    <p className="text-sm text-gray-500">{document.mimeType}</p>
-                  </div>
-                  <div className="col-span-2">
-                    <p className="font-medium text-gray-900">{formatDate(document.createdAt)}</p>
-                    <p className="text-sm text-gray-500">
-                      oleh {document.createdBy.firstName} {document.createdBy.lastName}
-                    </p>
-                  </div>
-                  <div className="col-span-2">
-                    <ActionsDropdown 
-                      items={documentActions(
-                        document,
-                        handleViewDocument,
-                        handleEditDocument,
-                        handleDownload,
-                        handleShareDocument,
-                        handleArchiveDocument,
-                        handleDeleteDocument
-                      )}
-                    />
-                  </div>
+                  <ActionsDropdown 
+                     items={documentActions(
+                       document,
+                       handleViewDocument,
+                       handleEditDocument,
+                       handleDownload,
+                       handleShareDocument,
+                       handleArchiveDocument,
+                       handleDeleteDocument
+                     )}
+                   />
                 </div>
               ))}
+            </div>
+          )}
 
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <div className="flex items-center justify-between pt-4">
-                  <p className="text-sm text-gray-600">
-                    Halaman {currentPage} dari {totalPages}
-                  </p>
-                  <div className="flex space-x-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                      disabled={currentPage === 1}
-                    >
-                      Sebelumnya
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
-                      disabled={currentPage === totalPages}
-                    >
-                      Selanjutnya
-                    </Button>
-                  </div>
-                </div>
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center space-x-2 mt-6">
+              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+                const pageNum = i + 1
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={`w-8 h-8 text-sm rounded ${
+                      currentPage === pageNum
+                        ? 'bg-[#187F7E] text-white'
+                        : 'text-gray-600 hover:bg-gray-100'
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                )
+              })}
+              {totalPages > 5 && (
+                <span className="text-gray-400">...</span>
+              )}
+              {totalPages > 5 && (
+                <button
+                  onClick={() => setCurrentPage(totalPages)}
+                  className={`w-8 h-8 text-sm rounded ${
+                    currentPage === totalPages
+                      ? 'bg-[#187F7E] text-white'
+                      : 'text-gray-600 hover:bg-gray-100'
+                  }`}
+                >
+                  {totalPages}
+                </button>
               )}
             </div>
           )}
         </CardContent>
       </Card>
 
-      {/* Modals */}
-      <DocumentDetailModal
-        documentId={selectedDocumentId}
-        isOpen={showDetailModal}
-        onClose={() => {
-          setShowDetailModal(false)
-          setSelectedDocumentId(null)
-        }}
-        onEdit={handleEditDocument}
-        onDownload={handleDownload}
-      />
+      {/* Document Detail Modal */}
+      {selectedDocumentId && (
+        <DocumentDetailModal
+          documentId={selectedDocumentId}
+          isOpen={showDetailModal}
+          onClose={() => {
+            setShowDetailModal(false)
+            setSelectedDocumentId(null)
+          }}
+        />
+      )}
 
+      {/* Delete Confirmation Modal */}
       <DeleteConfirmationModal
         isOpen={deleteModal.isOpen}
         onClose={() => setDeleteModal({ isOpen: false, document: null, loading: false })}
@@ -441,6 +467,30 @@ export default function DocumentsPage() {
         itemName={deleteModal.document?.title}
         loading={deleteModal.loading}
       />
+
+      {/* Access Denied Modal */}
+      <Dialog open={accessDeniedModal.isOpen} onOpenChange={(open) => setAccessDeniedModal({ ...accessDeniedModal, isOpen: open })}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-red-600">
+              <AlertCircle className="h-5 w-5" />
+              Akses Ditolak
+            </DialogTitle>
+          </DialogHeader>
+          <div className="py-4">
+            <p className="text-gray-700">{accessDeniedModal.message}</p>
+          </div>
+          <div className="flex justify-end">
+            <Button 
+              onClick={() => setAccessDeniedModal({ isOpen: false, message: '' })}
+              className="bg-gray-500 hover:bg-gray-600 text-white"
+            >
+              Tutup
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
+    </PG>
   )
 }

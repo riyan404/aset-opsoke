@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
+import { PermissionGuard, usePermission } from '@/components/PermissionGuard'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -31,6 +32,7 @@ interface NewCategoryForm {
 
 export default function CategoriesPage() {
   const { token, user } = useAuth()
+  const { canWrite } = usePermission('CATEGORIES', 'canWrite')
   const [activeTab, setActiveTab] = useState<'assets' | 'documents' | 'departments'>('assets')
   const [assetCategories, setAssetCategories] = useState<Category[]>([])
   const [documentCategories, setDocumentCategories] = useState<Category[]>([])
@@ -329,21 +331,9 @@ export default function CategoriesPage() {
     return baseActions
   }
 
-  // Check if user is admin
-  if (user?.role !== 'ADMIN') {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-center">
-          <Settings className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Access Denied</h2>
-          <p className="text-gray-600">You don't have permission to manage categories.</p>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="space-y-6">
+    <PermissionGuard module="CATEGORIES" permission="canRead">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -397,13 +387,24 @@ export default function CategoriesPage() {
                     <CardDescription>{getTabConfig(activeTab).description}</CardDescription>
                   </div>
                 </div>
-                <Button
-                  onClick={() => setShowAddForm(true)}
-                  className="bg-[#187F7E] hover:bg-[#00AAA8]"
+                <PermissionGuard 
+                  module="CATEGORIES" 
+                  permission="canWrite"
+                  fallback={
+                    <Button disabled className="bg-gray-400 cursor-not-allowed">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Access Denied
+                    </Button>
+                  }
                 >
-                  <Plus className="w-4 h-4 mr-2" />
-                  Add Category
-                </Button>
+                  <Button
+                    onClick={() => setShowAddForm(true)}
+                    className="bg-[#187F7E] hover:bg-[#00AAA8]"
+                  >
+                    <Plus className="w-4 h-4 mr-2" />
+                    Add Category
+                  </Button>
+                </PermissionGuard>
               </div>
             </CardHeader>
             <CardContent>
@@ -609,5 +610,6 @@ export default function CategoriesPage() {
 
 
     </div>
+    </PermissionGuard>
   )
 }

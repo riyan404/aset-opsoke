@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
+import { PermissionGuard } from '@/components/PermissionGuard'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -270,7 +271,8 @@ export default function AuditPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <PermissionGuard module="audit" permission="canRead">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -510,5 +512,6 @@ export default function AuditPage() {
         </CardContent>
       </Card>
     </div>
+    </PermissionGuard>
   )
 }

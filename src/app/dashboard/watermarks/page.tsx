@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
+import { PermissionGuard, usePermission } from '@/components/PermissionGuard'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -35,6 +36,7 @@ interface WatermarkForm {
 
 export default function WatermarksPage() {
   const { token, user } = useAuth()
+  const { canWrite } = usePermission('WATERMARKS', 'canWrite')
   const [watermarks, setWatermarks] = useState<WatermarkConfig[]>([])
   const [loading, setLoading] = useState(false)
   const [showAddForm, setShowAddForm] = useState(false)
@@ -198,35 +200,34 @@ export default function WatermarksPage() {
     { value: 'bottom-right', label: 'Bottom Right' },
   ]
 
-  // Check if user is admin
-  if (user?.role !== 'ADMIN') {
-    return (
-      <div className="flex items-center justify-center min-h-[400px]">
-        <div className="text-center">
-          <Settings className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Access Denied</h2>
-          <p className="text-gray-600">You don't have permission to manage watermark configurations.</p>
-        </div>
-      </div>
-    )
-  }
-
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Watermark Management</h1>
-          <p className="text-gray-600">Configure custom watermarks for each department's documents</p>
-        </div>
-        <Button
-          onClick={() => setShowAddForm(true)}
-          className="bg-[#187F7E] hover:bg-[#00AAA8]"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          Add Watermark
-        </Button>
-      </div>
+    <PermissionGuard module="WATERMARKS" permission="canRead">
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Watermark Management</h1>
+            <p className="text-gray-600">Configure custom watermarks for each department's documents</p>
+          </div>
+          <PermissionGuard 
+            module="WATERMARKS" 
+            permission="canWrite"
+            fallback={
+              <Button disabled className="bg-gray-400 cursor-not-allowed">
+                <Plus className="w-4 h-4 mr-2" />
+                Access Denied
+              </Button>
+            }
+          >
+            <Button
+               onClick={() => setShowAddForm(true)}
+               className="bg-[#187F7E] hover:bg-[#00AAA8]"
+             >
+               <Plus className="w-4 h-4 mr-2" />
+               Add Watermark
+             </Button>
+           </PermissionGuard>
+         </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Watermarks List */}
@@ -432,5 +433,6 @@ export default function WatermarksPage() {
         loading={deleteModal.loading}
       />
     </div>
+    </PermissionGuard>
   )
 }

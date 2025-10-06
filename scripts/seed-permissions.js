@@ -19,16 +19,19 @@ async function seedPermissions() {
       { department: 'Digital Department', module: 'DIGITAL_ASSETS', canRead: true, canWrite: true, canDelete: true },
       { department: 'Digital Department', module: 'ASSETS', canRead: true, canWrite: false, canDelete: false },
       { department: 'Digital Department', module: 'DOCUMENTS', canRead: true, canWrite: false, canDelete: false },
+      { department: 'Digital Department', module: 'AI_CHAT', canRead: true, canWrite: true, canDelete: false },
       
       // IT Department - Full access to assets and documents, read-only for digital assets
       { department: 'IT Department', module: 'ASSETS', canRead: true, canWrite: true, canDelete: true },
       { department: 'IT Department', module: 'DOCUMENTS', canRead: true, canWrite: true, canDelete: true },
       { department: 'IT Department', module: 'DIGITAL_ASSETS', canRead: true, canWrite: false, canDelete: false },
+      { department: 'IT Department', module: 'AI_CHAT', canRead: true, canWrite: true, canDelete: false },
       
       // HR Department - Full access to documents, read-only for others
       { department: 'HR Department', module: 'DOCUMENTS', canRead: true, canWrite: true, canDelete: true },
       { department: 'HR Department', module: 'ASSETS', canRead: true, canWrite: false, canDelete: false },
       { department: 'HR Department', module: 'DIGITAL_ASSETS', canRead: true, canWrite: false, canDelete: false },
+      { department: 'HR Department', module: 'AI_CHAT', canRead: true, canWrite: true, canDelete: false },
     ]
 
     // Create permissions

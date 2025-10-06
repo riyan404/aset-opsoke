@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
+import { PermissionGuard } from '@/components/PermissionGuard'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -124,7 +125,8 @@ export default function NewUserPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <PermissionGuard module="users" permission="canWrite">
+      <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-4">
@@ -343,5 +345,6 @@ export default function NewUserPage() {
         </div>
       </form>
     </div>
+    </PermissionGuard>
   )
 }

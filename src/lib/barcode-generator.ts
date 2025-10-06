@@ -184,16 +184,27 @@ export async function generateUniqueBarcode(options: BarcodeGenerationOptions): 
   const maxAttempts = 10
 
   while (attempts < maxAttempts) {
-    const barcode = await generateAssetBarcode(options)
-    const exists = await isBarcodeExists(barcode)
-    
-    if (!exists) {
-      return barcode
+    try {
+      const barcode = await generateAssetBarcode(options)
+      const exists = await isBarcodeExists(barcode)
+      
+      if (!exists) {
+        console.log(`Barcode generated successfully: ${barcode}`)
+        return barcode
+      }
+      
+      console.log(`Barcode collision detected: ${barcode}, retrying...`)
+      attempts++
+      // If collision occurs, wait a bit and try again
+      await new Promise(resolve => setTimeout(resolve, 100))
+    } catch (error) {
+      console.error(`Error generating barcode (attempt ${attempts + 1}):`, error)
+      attempts++
+      if (attempts >= maxAttempts) {
+        throw new Error(`Failed to generate barcode: ${error instanceof Error ? error.message : 'Unknown error'}`)
+      }
+      await new Promise(resolve => setTimeout(resolve, 100))
     }
-    
-    attempts++
-    // If collision occurs, wait a bit and try again
-    await new Promise(resolve => setTimeout(resolve, 100))
   }
 
   throw new Error('Failed to generate unique barcode after multiple attempts')

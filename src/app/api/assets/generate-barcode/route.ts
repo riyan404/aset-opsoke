@@ -11,7 +11,10 @@ export const POST = withAuth(async (request: NextRequest) => {
     const body = await request.json()
     const { category, kuota } = body
 
+    console.log('Generate barcode request:', { category, kuota })
+
     if (!category) {
+      console.log('Category is missing from request')
       return NextResponse.json(
         { error: 'Category is required' },
         { status: 400 }
@@ -19,11 +22,13 @@ export const POST = withAuth(async (request: NextRequest) => {
     }
 
     // Generate unique barcode
+    console.log('Generating barcode for category:', category)
     const barcode = await generateUniqueBarcode({
       category,
       kuota: kuota || 1000 // Default quota
     })
 
+    console.log('Barcode generated successfully:', barcode)
     return NextResponse.json({
       success: true,
       barcode,
@@ -32,8 +37,9 @@ export const POST = withAuth(async (request: NextRequest) => {
 
   } catch (error) {
     console.error('Generate barcode error:', error)
+    const errorMessage = error instanceof Error ? error.message : 'Failed to generate barcode'
     return NextResponse.json(
-      { error: 'Failed to generate barcode' },
+      { error: errorMessage },
       { status: 500 }
     )
   }

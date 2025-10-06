@@ -66,9 +66,10 @@ export async function checkUserPermissions(
     let result: PermissionCheck
 
     if (!permission) {
-      // Default permissions if no specific permission is set
+      // No permissions granted if no specific permission is set
+      // This ensures department-based access control works properly
       result = {
-        canRead: true, // Default read access
+        canRead: false,
         canWrite: false,
         canDelete: false
       }
@@ -86,9 +87,9 @@ export async function checkUserPermissions(
     return result
   } catch (error) {
     console.error('Error checking user permissions:', error)
-    // Default to safe permissions on error
+    // Default to no permissions on error for security
     return {
-      canRead: true,
+      canRead: false,
       canWrite: false,
       canDelete: false
     }

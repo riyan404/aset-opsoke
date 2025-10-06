@@ -11,6 +11,10 @@ export const POST = withAuth(async (request: NextRequest) => {
     const pathSegments = url.pathname.split('/')
     const id = pathSegments[pathSegments.length - 2] // Get the asset ID before 'duplicate'
 
+    // Get custom name from request body
+    const body = await request.json().catch(() => ({}))
+    const customName = body.name
+
     // Get the original asset
     const originalAsset = await prisma.asset.findUnique({
       where: { id },
@@ -23,10 +27,13 @@ export const POST = withAuth(async (request: NextRequest) => {
       )
     }
 
+    // Use custom name if provided, otherwise use default format
+    const newAssetName = customName || `${originalAsset.name} (Copy)`
+
     // Create new asset with duplicated data
     const duplicatedAsset = await prisma.asset.create({
       data: {
-        name: `${originalAsset.name} (Copy)`,
+        name: newAssetName,
         description: originalAsset.description,
         category: originalAsset.category,
         subcategory: originalAsset.subcategory,
